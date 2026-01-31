@@ -1,0 +1,375 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.envelope-container {
+  position: relative;
+  width: 300px;
+  height: 500px;
+}
+
+/* perspective for 3D flap folding */
+.envelope-container {
+  perspective: 1200px;
+  perspective-origin: center top;
+}
+
+.envelope {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.08), rgba(0,0,0,0) 40%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.04) 0 2px, rgba(0,0,0,0.02) 2px 4px),
+    #D4B67C; /* Kraft paper */
+  /* square top corners, slight rounding on bottom corners */
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.18), inset 0 0 0 1px rgba(0,0,0,0.05);
+  /* allow the folded flap to remain visible outside the envelope top */
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1;
+  transition: transform 1s ease-in-out;
+  filter: saturate(0.95);
+}
+
+.flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* make the flap noticeably shorter so it's not an obvious trapezoid */
+  height: 12%;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.08), rgba(255,255,255,0) 40%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0 3px, rgba(0,0,0,0.03) 3px 6px),
+    #c9a86e;
+  /* soften the taper so the flap reads more like a short lid than a big trapezoid */
+  /* swap long/short edges: make the long edge the top and the short edge the bottom */
+  clip-path: polygon(0% 0%, 100% 0%, 96% 100%, 4% 100%);
+  /* no rounding on the long/top edge */
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  box-shadow: inset 0 -2px 4px rgba(0,0,0,0.12);
+  /* hinge should be along the top edge so the flap lifts upward */
+  transform-origin: top center;
+  /* keep 3D transforms visible and ensure the flap sits above the envelope */
+  transform-style: preserve-3d;
+  /* show the back face (user prefers visible underside) */
+  backface-visibility: visible;
+  z-index: 4; /* always on top */
+  /* create its own compositing layer to avoid subpixel shifts */
+  transform: translateZ(0);
+  /* very smooth, fluid opening with longer transition */
+  transition: transform 600ms cubic-bezier(.2,.9,.2,1), box-shadow 180ms ease-in-out;
+  will-change: transform, box-shadow;
+  cursor: pointer;
+}
+
+/* Slight flap movement on hover */
+.flap:hover {
+  /* baseline closed hover: gentle, not too sensitive */
+  transform: rotateX(-25deg);
+  transition: transform 160ms ease-in-out, box-shadow 160ms ease-in-out;
+  box-shadow: 0 8px 14px rgba(0,0,0,0.12);
+  pointer-events: auto;
+}
+
+/* Flap open animation */
+.open-flap {
+  /* final open angle: keep front face visible */
+  transform: rotateX(-140deg) translateZ(2px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.16);
+}
+
+/* When flap is already open, hovering should hint closing (rotate toward 0deg) */
+.open-flap:hover {
+  /* when open, hover should suggest reclosing: tilt toward closed (reduce magnitude) */
+  transform: rotateX(-100deg) translateZ(1px);
+  box-shadow: 0 8px 14px rgba(0,0,0,0.12);
+}
+
+/* When the envelope is open (pulled), make the hover hint subtler so it suggests reclosing
+   without looking like a forced undo—reduce angle and shadow while hovered in this state. */
+.envelope.pull-envelope .flap:hover {
+  /* when envelope fully pulled, hover should be subtle (don't undo too strongly) */
+  transform: rotateX(-140deg) translateZ(1px);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.08);
+  transition: transform 120ms ease-in-out, box-shadow 120ms ease-in-out;
+}
+
+/* more obvious hover when the user is in the opening phase */
+.envelope.opening .flap:hover {
+  /* hover should go further open (more negative angle) to show opening progress */
+  transform: rotateX(-170deg) translateZ(12px) !important;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.32) !important;
+  transition: transform 80ms cubic-bezier(.2,.9,.2,1), box-shadow 80ms ease-in-out !important;
+}
+
+/* subtler hover during reclosing phase */
+.envelope.reclosing .flap:hover {
+  /* slightly stronger hint when reclosing: move noticeably toward closed */
+  transform: rotateX(-100deg) translateZ(2px);
+  box-shadow: 0 8px 14px rgba(0,0,0,0.10);
+  transition: transform 120ms ease-in-out, box-shadow 120ms ease-in-out;
+}
+
+@keyframes flapOpen {
+  0% { transform: rotateX(0deg); }
+  /* rotate so the flap lifts up but doesn't fully flip its front face */
+  100% { transform: rotateX(-150deg) translateZ(2px); }
+}
+
+.card {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%) translateY(40%) translateZ(-20px);
+  width: 80%;
+  height: 90%;
+  background: #C8AD7F; /* Card color */
+  border-radius: 2px;
+  z-index: 0;
+  opacity: 0;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+  overflow: hidden;
+
+  /* Flex layout to pin title at top and center horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.envelope.reclosing .card {
+  transition: transform 600ms ease-in-out, opacity 600ms ease-in-out;
+}
+
+.card-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.card-handle {
+  position: absolute;
+  top: 50%;
+  left: 24%;
+  transform: translate(-50%, -50%) translateX(-24px) rotate(90deg);
+  font-family: 'Special Elite', cursive;
+  font-size: 20px;
+  color: #000;
+  z-index: 6;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+  text-align: center;
+  pointer-events: none;
+}
+
+.card-handle-link {
+  pointer-events: auto;
+  text-decoration: none;
+  color: inherit;
+}
+
+.card-category-link {
+  pointer-events: auto;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Category pages */
+.category-page {
+  margin: 0;
+  min-height: 100vh;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  font-family: 'Special Elite', cursive;
+}
+
+.category-page::before {
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 120vmax;
+  height: 120vmax;
+  background: url('immram - card image.png') center/cover no-repeat;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  z-index: 0;
+}
+
+.category-page .page-title {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: 56px;
+  color: #000;
+  margin-top: 24px;
+}
+
+.bandcamp-embed {
+  position: absolute;
+  z-index: 1;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 420px;
+  height: 120px;
+  border: 0;
+  margin-top: 0;
+}
+
+.music-placeholders {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 1;
+}
+
+.music-placeholder {
+  width: 260px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed rgba(0, 0, 0, 0.5);
+  color: #000;
+  font-family: 'Special Elite', cursive;
+  font-size: 18px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 480px) {
+  .bandcamp-embed {
+    width: 320px;
+    height: 120px;
+  }
+}
+.card-handle-secondary {
+  position: absolute;
+  top: 50%;
+  left: 24%;
+  transform: translate(-50%, -50%) translateX(60px) translateY(-140px) rotate(90deg);
+  font-family: 'Special Elite', cursive;
+  font-size: 18px; /* Slightly smaller font size */
+  color: #000;
+  z-index: 6;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+  text-align: center;
+  pointer-events: none;
+}
+
+.card-handle-tertiary {
+  position: absolute;
+  top: 50%;
+  left: 24%;
+  transform: translate(-50%, -50%) translateX(60px) translateY(-50px) rotate(90deg);
+  font-family: 'Special Elite', cursive;
+  font-size: 18px;
+  color: #000;
+  z-index: 6;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+  text-align: center;
+  pointer-events: none;
+}
+
+.card-handle-quaternary {
+  position: absolute;
+  top: 50%;
+  left: 24%;
+  transform: translate(-50%, -50%) translateX(60px) translateY(40px) rotate(90deg);
+  font-family: 'Special Elite', cursive;
+  font-size: 18px;
+  color: #000;
+  z-index: 6;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+  text-align: center;
+  pointer-events: none;
+}
+
+
+/* Show categories when the card is pulled out (no position jumping) */
+.envelope.pull-envelope .card .card-handle,
+.envelope.pull-envelope .card .card-handle-secondary,
+.envelope.pull-envelope .card .card-handle-tertiary,
+.envelope.pull-envelope .card .card-handle-quaternary {
+  opacity: 1;
+}
+
+.envelope.pull-envelope .card {
+  transform: translateX(-50%) translateY(0) translateZ(20px) translateY(-120%);
+  opacity: 1;
+  z-index: 5;
+}
+
+.envelope.pull-envelope .card.rotated {
+  transform: translateX(-50%) translateY(-140%) translateZ(20px) rotateZ(-90deg) scale(2.2);
+  transition: transform 800ms ease-in-out;
+}
+
+.pull-envelope {
+  transform: translateY(120%);
+}
+
+@keyframes envelopeDown {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(120%); }
+}
+
+/* Import Special Elite font */
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+.card-title {
+  position: absolute;
+  font-family: 'Special Elite', cursive;
+  font-size: 24px;
+  color: #000;
+  pointer-events: none;
+  z-index: 6;
+  transition: transform 0.8s ease-in-out, font-size 0.8s ease-in-out;
+
+  /* Portrait (vertical card) */
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) rotate(270deg);
+  transform-origin: left center;
+  text-align: center;
+}
+
+/* Landscape (horizontal card) */
+.envelope.pull-envelope .card.rotated .card-title {
+  font-size: 28px;               /* slightly bigger in landscape */
+  top: 8px;                       /* near top of card */
+  left: 50%;                      /* horizontally centered */
+  transform: translateX(-50%) rotate(0deg);
+  transform-origin: top center;
+  text-align: center;
+}
