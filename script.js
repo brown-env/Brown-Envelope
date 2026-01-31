@@ -52,8 +52,6 @@ function onFlapClick() {
     // reset card rotation
     card.classList.remove('rotated');
 
-    // reset title position
-
     // wait for card to shrink/unrotate, then reseal envelope
     setTimeout(() => {
       envelope.classList.remove('pull-envelope');
@@ -81,4 +79,31 @@ function onFlapClick() {
   }
 }
 
-flap.addEventListener('click', onFlapClick);
+if (flap && envelope && card) {
+  flap.addEventListener('click', onFlapClick);
+}
+
+const embeddedFrames = document.querySelectorAll('iframe[src]');
+if (embeddedFrames.length > 0) {
+  const ensureResourceHint = (origin, rel) => {
+    const selector = `link[rel="${rel}"][href="${origin}"]`;
+    if (document.head.querySelector(selector)) return;
+    const link = document.createElement('link');
+    link.rel = rel;
+    link.href = origin;
+    document.head.appendChild(link);
+  };
+
+  embeddedFrames.forEach((frame) => {
+    try {
+      const url = new URL(frame.src, window.location.href);
+      ensureResourceHint(url.origin, 'preconnect');
+      ensureResourceHint(url.origin, 'dns-prefetch');
+    } catch {
+      // ignore invalid URLs
+    }
+
+    frame.setAttribute('loading', 'eager');
+    frame.setAttribute('fetchpriority', 'high');
+  });
+}

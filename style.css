@@ -203,7 +203,7 @@ body, html {
   top: 50%;
   left: 24%;
   transform: translate(-50%, -50%) translateX(-24px) rotate(90deg);
-  font-family: 'Special Elite', cursive;
+  font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
   font-size: 20px;
   color: #000;
   z-index: 6;
@@ -235,7 +235,7 @@ body, html {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  font-family: 'Special Elite', cursive;
+  font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
 }
 
 .category-page::before {
@@ -245,9 +245,15 @@ body, html {
   left: 50%;
   width: 120vmax;
   height: 120vmax;
-  background: url('immram - card image.png') center/cover no-repeat;
+  background: url('big screen page texture.png') center/cover no-repeat;
   transform: translate(-50%, -50%) rotate(-90deg);
   z-index: 0;
+}
+
+@media (max-width: 2899px) {
+  .category-page::before {
+    background: url('small screen page texture.png') center/cover no-repeat;
+  }
 }
 
 .category-page .page-title {
@@ -259,6 +265,26 @@ body, html {
   font-size: 56px;
   color: #000;
   margin-top: 24px;
+}
+
+@media (max-width: 900px) {
+  .category-page .page-title {
+    font-size: 40px;
+    margin-top: 16px;
+    padding: 0 16px;
+    text-align: center;
+    max-width: 90vw;
+    line-height: 1.1;
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-page .page-title {
+    font-size: 32px;
+    margin-top: 12px;
+    max-width: 94vw;
+  }
 }
 
 .bandcamp-embed {
@@ -292,7 +318,7 @@ body, html {
   justify-content: center;
   border: 2px dashed rgba(0, 0, 0, 0.5);
   color: #000;
-  font-family: 'Special Elite', cursive;
+  font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
   font-size: 18px;
   background: rgba(255, 255, 255, 0.15);
 }
@@ -304,9 +330,9 @@ body, html {
   }
 }
 
-@media (max-width: 2500px) {
+@media (min-width: 2900px) {
   .envelope.pull-envelope .card.rotated {
-    transform: translateX(-50%) translateY(-120%) translateZ(20px) scale(1);
+    transform: translateX(-50%) translateY(-140%) translateZ(20px) rotateZ(-90deg) scale(2.2);
   }
 }
 .card-handle-secondary {
@@ -314,7 +340,7 @@ body, html {
   top: 50%;
   left: 24%;
   transform: translate(-50%, -50%) translateX(60px) translateY(-140px) rotate(90deg);
-  font-family: 'Special Elite', cursive;
+  font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
   font-size: 18px; /* Slightly smaller font size */
   color: #000;
   z-index: 6;
@@ -329,7 +355,7 @@ body, html {
   top: 50%;
   left: 24%;
   transform: translate(-50%, -50%) translateX(60px) translateY(-50px) rotate(90deg);
-  font-family: 'Special Elite', cursive;
+  font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
   font-size: 18px;
   color: #000;
   z-index: 6;
@@ -344,7 +370,7 @@ body, html {
   top: 50%;
   left: 24%;
   transform: translate(-50%, -50%) translateX(60px) translateY(40px) rotate(90deg);
-  font-family: 'Special Elite', cursive;
+  font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
   font-size: 18px;
   color: #000;
   z-index: 6;
@@ -359,7 +385,7 @@ body, html {
   top: 50%;
   left: 24%;
   transform: translate(-50%, -50%) translateX(60px) translateY(130px) rotate(90deg);
-  font-family: 'Special Elite', cursive;
+  font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
   font-size: 18px;
   color: #000;
   z-index: 6;
@@ -394,7 +420,7 @@ body, html {
 }
 
 .envelope.pull-envelope .card.rotated {
-  transform: translateX(-50%) translateY(-140%) translateZ(20px) rotateZ(-90deg) scale(2.2);
+  transform: translateX(-50%) translateY(-120%) translateZ(20px) scale(1);
   transition: transform 800ms ease-in-out;
 }
 
@@ -410,44 +436,16 @@ body, html {
 /* Import Special Elite font */
 @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 
-.card-title {
-  position: absolute;
-  font-family: 'Special Elite', cursive;
-  font-size: 24px;
-  color: #000;
-  pointer-events: none;
-  z-index: 6;
-  transition: transform 0.8s ease-in-out, font-size 0.8s ease-in-out;
-
-  /* Portrait (vertical card) */
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%) rotate(270deg);
-  transform-origin: left center;
-  text-align: center;
-}
-
 @supports (-webkit-touch-callout: none) {
   body,
   .category-page,
   .page-title,
-  .card-title,
   .card-handle,
   .card-handle-secondary,
   .card-handle-tertiary,
   .card-handle-quaternary,
   .card-handle-quinary,
   .music-placeholder {
-    font-family: 'Special Elite', Menlo, cursive;
+    font-family: 'Special Elite', Menlo, "Courier New", Courier, "Lucida Console", monospace;
   }
-}
-
-/* Landscape (horizontal card) */
-.envelope.pull-envelope .card.rotated .card-title {
-  font-size: 28px;               /* slightly bigger in landscape */
-  top: 8px;                       /* near top of card */
-  left: 50%;                      /* horizontally centered */
-  transform: translateX(-50%) rotate(0deg);
-  transform-origin: top center;
-  text-align: center;
 }
