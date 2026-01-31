@@ -83,6 +83,24 @@ if (flap && envelope && card) {
   flap.addEventListener('click', onFlapClick);
 }
 
+const delayedLinks = document.querySelectorAll('a[data-delay]');
+if (delayedLinks.length > 0) {
+  delayedLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const delayMs = Number(link.getAttribute('data-delay')) || 0;
+      if (delayMs <= 0) return;
+
+      event.preventDefault();
+      const target = link.getAttribute('href');
+      if (!target) return;
+
+      setTimeout(() => {
+        window.location.href = target;
+      }, delayMs);
+    });
+  });
+}
+
 const embeddedFrames = document.querySelectorAll('iframe[src]');
 if (embeddedFrames.length > 0) {
   const ensureResourceHint = (origin, rel) => {
