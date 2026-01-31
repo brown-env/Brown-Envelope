@@ -82,3 +82,32 @@ function onFlapClick() {
 }
 
 flap.addEventListener('click', onFlapClick);
+
+const musicPage = document.querySelector('.music-page');
+if (musicPage) {
+  const musicEnvelopes = Array.from(document.querySelectorAll('.music-page .music-envelope-container'));
+  const smallScreenQuery = window.matchMedia('(max-width: 900px)');
+
+  const clearTouchHover = () => {
+    musicEnvelopes.forEach((container) => container.classList.remove('touch-hover'));
+  };
+
+  musicEnvelopes.forEach((container) => {
+    container.addEventListener('click', (e) => {
+      if (!smallScreenQuery.matches) return;
+      e.preventDefault();
+
+      const isActive = container.classList.contains('touch-hover');
+      clearTouchHover();
+      if (!isActive) {
+        container.classList.add('touch-hover');
+      }
+    });
+  });
+
+  window.addEventListener('resize', () => {
+    if (!smallScreenQuery.matches) {
+      clearTouchHover();
+    }
+  });
+}

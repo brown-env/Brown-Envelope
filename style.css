@@ -666,9 +666,41 @@ body, html {
   transition: transform 800ms ease-in-out;
 }
 
+@media (max-width: 2599px) and (orientation: portrait) {
+  body.home-page {
+    align-items: center;
+  }
+
+  body.home-page .envelope-container {
+    width: 280px;
+    height: 460px;
+  }
+
+  body.home-page .card {
+    width: 82%;
+    height: 88%;
+  }
+
+  body.home-page .envelope.pull-envelope .card {
+    transform: translateX(-50%) translateY(-115%) translateZ(20px);
+  }
+
+  body.home-page .envelope.pull-envelope .card.rotated {
+    transform: translateX(-50%) translateY(-125%) translateZ(20px) rotateZ(-90deg) scale(1.15);
+  }
+}
+
 @media (max-width: 900px) {
   .envelope.pull-envelope .card.rotated {
     transform: translateX(-50%) translateY(-120%) translateZ(20px) rotateZ(0deg) scale(1);
+  }
+}
+
+@media (max-width: 900px) {
+  .music-page .music-envelope-container.touch-hover .flap {
+    transform: rotateX(-25deg);
+    transition: transform 160ms ease-in-out, box-shadow 160ms ease-in-out;
+    box-shadow: 0 8px 14px rgba(0,0,0,0.12);
   }
 }
 
