@@ -1,87 +1,87 @@
-const flap = document.querySelector('.flap');
-const envelope = document.querySelector('.envelope');
-const card = document.querySelector('.card');
+const homeFlap = document.querySelector('.home-page .flap');
+const homeEnvelope = document.querySelector('.home-page .envelope');
+const homeCard = document.querySelector('.home-page .card');
 
 let isOpen = false;
 let animating = false;
 
 function onFlapClick() {
-  if (animating) return;
+  if (animating || !homeFlap || !homeEnvelope || !homeCard) return;
 
   if (!isOpen) {
     animating = true;
 
     // mark opening state (used for hover effects)
-    envelope.classList.add('opening');
+    homeEnvelope.classList.add('opening');
 
     // open flap
-    flap.classList.add('open-flap');
+    homeFlap.classList.add('open-flap');
 
     // flap transition end
     const onFlapTransition = function (e) {
       if (e.propertyName !== 'transform') return;
-      flap.removeEventListener('transitionend', onFlapTransition);
+      homeFlap.removeEventListener('transitionend', onFlapTransition);
 
       // pull envelope to reveal card
-      envelope.classList.add('pull-envelope');
+      homeEnvelope.classList.add('pull-envelope');
 
       const onEnvelopeEnd = function (ev) {
         if (ev.propertyName !== 'transform') return;
-        envelope.removeEventListener('transitionend', onEnvelopeEnd);
-        envelope.classList.remove('opening');
+        homeEnvelope.removeEventListener('transitionend', onEnvelopeEnd);
+        homeEnvelope.classList.remove('opening');
         animating = false;
         isOpen = true;
 
         // after 1 second, rotate the card
         setTimeout(() => {
-          card.classList.add('rotated');
+          homeCard.classList.add('rotated');
         }, 1000);
       };
 
-      envelope.addEventListener('transitionend', onEnvelopeEnd);
+      homeEnvelope.addEventListener('transitionend', onEnvelopeEnd);
     };
 
-    flap.addEventListener('transitionend', onFlapTransition);
+    homeFlap.addEventListener('transitionend', onFlapTransition);
 
   } else {
     animating = true;
 
     // mark reclosing state (subtle hover)
-    envelope.classList.add('reclosing');
+    homeEnvelope.classList.add('reclosing');
 
     // reset card rotation
-    card.classList.remove('rotated');
-
-    // reset title position
+    homeCard.classList.remove('rotated');
 
     // wait for card to shrink/unrotate, then reseal envelope
     setTimeout(() => {
-      envelope.classList.remove('pull-envelope');
+      homeEnvelope.classList.remove('pull-envelope');
 
       const onEnvelopeTransition = function (e) {
         if (e.propertyName !== 'transform') return;
-        envelope.removeEventListener('transitionend', onEnvelopeTransition);
-        envelope.classList.remove('reclosing');
+        homeEnvelope.removeEventListener('transitionend', onEnvelopeTransition);
+        homeEnvelope.classList.remove('reclosing');
 
         // close flap
-        flap.classList.remove('open-flap');
+        homeFlap.classList.remove('open-flap');
 
         const onFlapClose = function (ev) {
           if (ev.propertyName !== 'transform') return;
-          flap.removeEventListener('transitionend', onFlapClose);
+          homeFlap.removeEventListener('transitionend', onFlapClose);
           animating = false;
           isOpen = false;
         };
 
-        flap.addEventListener('transitionend', onFlapClose);
+        homeFlap.addEventListener('transitionend', onFlapClose);
       };
 
-      envelope.addEventListener('transitionend', onEnvelopeTransition);
+      homeEnvelope.addEventListener('transitionend', onEnvelopeTransition);
     }, 600);
   }
 }
 
-flap.addEventListener('click', onFlapClick);
+if (homeFlap) {
+  homeFlap.addEventListener('click', onFlapClick);
+}
 
 const musicPage = document.querySelector('.music-page');
 if (musicPage) {
