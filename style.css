@@ -166,7 +166,7 @@ body, html {
 }
 
 @media (max-width: 900px) {
-  .card-image {
+  body:not(.home-page) .card-image {
     transform: scale(1.25);
     transform-origin: center;
   }
