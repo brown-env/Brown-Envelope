@@ -195,9 +195,10 @@ body, html {
     white-space: nowrap;
     word-break: normal;
     overflow-wrap: normal;
-    left: 50%;
-    right: auto;
-    transform: translate(-50%, -50%);
+    left: 0;
+    right: 0;
+    width: 100%;
+    transform: translateY(-50%);
     text-align: center;
   }
 }
@@ -243,7 +244,7 @@ body, html {
   --title-size: 56px;
   --title-margin-top: 48px;
   --title-line-height: 1.1;
-  --back-size: 46px;
+  --back-size: 56px;
 }
 
 .category-page::before {
@@ -281,7 +282,7 @@ body, html {
 
 .back-link {
   position: absolute;
-  top: calc(var(--title-margin-top) + (var(--title-size) * var(--title-line-height) / 2) - (var(--back-size) / 2));
+  top: calc(var(--title-margin-top) + (var(--title-size) * var(--title-line-height) / 2) - (var(--back-size) / 2) - 14px);
   left: 24px;
   z-index: 2;
   font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
@@ -335,7 +336,7 @@ body, html {
     --title-size: 40px;
     --title-margin-top: 72px;
     --title-line-height: 1.1;
-    --back-size: 46px;
+    --back-size: 54px;
   }
 
   .category-page .page-title {
@@ -358,7 +359,7 @@ body, html {
     --title-size: 32px;
     --title-margin-top: 96px;
     --title-line-height: 1.1;
-    --back-size: 42px;
+    --back-size: 50px;
   }
 
   .category-page .page-title {
@@ -524,36 +525,38 @@ body, html {
   text-shadow: 0 1px 0 rgba(0,0,0,0.15);
 }
 
-.music-envelope-container.is-openable:hover .flap {
-  transform: rotateX(-140deg) translateZ(2px);
-  box-shadow: 0 12px 20px rgba(0,0,0,0.16);
+@media (hover: hover) and (pointer: fine) {
+  .music-envelope-container.is-openable:hover .flap {
+    transform: rotateX(-140deg) translateZ(2px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.16);
+  }
+
+  .music-envelope-container.is-openable:hover .seal-text--flap {
+    opacity: 0;
+  }
+
+  .music-envelope-container:not(.is-openable) .flap:hover {
+    transform: rotateX(-8deg);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.08);
+  }
+
+  .music-envelope-container.is-openable:hover .wax-seal {
+    transform: translate(-50%, -50%) rotate(-18deg) translateY(10px) scale(0.92);
+    opacity: 0.25;
+  }
+
+  .music-envelope-container:hover .wax-seal--june {
+    transform: translate(-50%, -50%) rotate(-3deg) translateY(1px);
+  }
 }
 
-.music-envelope-container.is-openable:hover .seal-text--flap {
+.music-page .music-envelope-container.is-openable.touch-hover .seal-text--flap {
   opacity: 0;
 }
 
-.music-page .music-envelope-container.touch-hover .seal-text--flap {
-  opacity: 0;
-}
-
-.music-envelope-container:not(.is-openable) .flap:hover {
-  transform: rotateX(-8deg);
-  box-shadow: 0 6px 10px rgba(0,0,0,0.08);
-}
-
-.music-envelope-container.is-openable:hover .wax-seal {
+.music-page .music-envelope-container.is-openable.touch-hover .wax-seal {
   transform: translate(-50%, -50%) rotate(-18deg) translateY(10px) scale(0.92);
   opacity: 0.25;
-}
-
-.music-page .music-envelope-container.touch-hover .wax-seal {
-  transform: translate(-50%, -50%) rotate(-18deg) translateY(10px) scale(0.92);
-  opacity: 0.25;
-}
-
-.music-envelope-container:hover .wax-seal--june {
-  transform: translate(-50%, -50%) rotate(-3deg) translateY(1px);
 }
 
 .redacted-x {

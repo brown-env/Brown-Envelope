@@ -95,6 +95,7 @@ if (musicPage) {
   musicEnvelopes.forEach((container) => {
     container.addEventListener('click', (e) => {
       if (!smallScreenQuery.matches) return;
+      if (!container.classList.contains('is-openable')) return;
       e.preventDefault();
 
       const isActive = container.classList.contains('touch-hover');
