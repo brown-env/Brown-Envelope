@@ -86,7 +86,7 @@ if (homeFlap) {
 const musicPage = document.querySelector('.music-page');
 if (musicPage) {
   const musicEnvelopes = Array.from(document.querySelectorAll('.music-page .music-envelope-container'));
-  const smallScreenQuery = window.matchMedia('(max-width: 2599px)');
+  const smallScreenQuery = window.matchMedia('(max-width: 1600px)');
 
   const clearTouchHover = () => {
     musicEnvelopes.forEach((container) => container.classList.remove('touch-hover'));
@@ -117,7 +117,7 @@ if (bribeEmailLink) {
   const mailtoHref = bribeEmailLink.getAttribute('data-mailto');
   const gmailHref = bribeEmailLink.getAttribute('data-gmail');
   const outlookHref = bribeEmailLink.getAttribute('data-outlook');
-  const mailtoFirstQuery = window.matchMedia('(max-width: 1599px)');
+  const mailtoFirstQuery = window.matchMedia('(max-width: 1600px)');
 
   bribeEmailLink.addEventListener('click', (e) => {
     e.preventDefault();
