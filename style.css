@@ -7,6 +7,11 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body.home-page, html.home-page {
   overflow: hidden;
 }
 
@@ -145,7 +150,7 @@ body, html {
 }
 
 .envelope.reclosing .card {
-  transition: transform 600ms ease-in-out, opacity 600ms ease-in-out;
+  transition: transform 600ms ease-in-out, opacity 220ms ease-in-out;
 }
 
 .card-image {
@@ -163,6 +168,14 @@ body, html {
   body:not(.home-page) .card-image {
     transform: scale(1.25);
     transform-origin: center;
+  }
+
+  body.home-page .card-handle {
+    left: 0;
+    right: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    text-align: center;
   }
 }
 
@@ -236,15 +249,17 @@ body, html {
   min-height: 100vh;
   background: #fff;
   position: relative;
-  overflow: hidden;
+  overflow-y: auto;
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
   --title-size: 56px;
   --title-margin-top: 48px;
   --title-line-height: 1.1;
   --back-size: 56px;
+  padding-bottom: 80px;
 }
 
 .category-page::before {
@@ -352,6 +367,10 @@ body, html {
     --back-size: 54px;
   }
 
+  .back-link {
+    top: calc(var(--title-margin-top) + (var(--title-size) * var(--title-line-height) / 2) - (var(--back-size) / 2) - 18px);
+  }
+
   .category-page .page-title {
     margin-bottom: 40px;
     padding: 0 16px;
@@ -387,7 +406,7 @@ body, html {
   align-items: center;
   justify-content: flex-start;
   overflow-y: auto;
-  padding-bottom: 48px;
+  padding-bottom: 96px;
 }
 
 .music-page .page-title {
@@ -538,7 +557,7 @@ body, html {
   text-shadow: 0 1px 0 rgba(0,0,0,0.15);
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (hover: hover) and (pointer: fine) and (min-width: 1601px) {
   .music-envelope-container.is-openable:hover .flap {
     transform: rotateX(-140deg) translateZ(2px);
     box-shadow: 0 12px 20px rgba(0,0,0,0.16);
