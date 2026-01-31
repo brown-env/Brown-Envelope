@@ -391,6 +391,8 @@ body, html {
 .seal-text--flap {
   top: 100%;
   clip-path: inset(0 0 50% 0);
+  opacity: 1;
+  transition: opacity 200ms ease;
 }
 
 .seal-text--body {
@@ -448,6 +450,10 @@ body, html {
 .music-envelope-container.is-openable:hover .flap {
   transform: rotateX(-140deg) translateZ(2px);
   box-shadow: 0 12px 20px rgba(0,0,0,0.16);
+}
+
+.music-envelope-container.is-openable:hover .seal-text--flap {
+  opacity: 0;
 }
 
 .music-envelope-container:not(.is-openable) .flap:hover {
