@@ -420,8 +420,14 @@ body, html {
 }
 
 .envelope.pull-envelope .card.rotated {
-  transform: translateX(-50%) translateY(-120%) translateZ(20px) rotateZ(-90deg) scale(1);
+  transform: translateX(-50%) translateY(-135%) translateZ(20px) rotateZ(-90deg) scale(1.55);
   transition: transform 800ms ease-in-out;
+}
+
+@media (max-width: 900px) {
+  .envelope.pull-envelope .card.rotated {
+    transform: translateX(-50%) translateY(-120%) translateZ(20px) rotateZ(0deg) scale(1);
+  }
 }
 
 .pull-envelope {
