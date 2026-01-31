@@ -114,43 +114,45 @@ if (musicPage) {
 
 const bribeEmailLink = document.querySelector('.bribe-email');
 if (bribeEmailLink) {
-  const mailtoHref = 'mailto:brownenvelope.music@gmail.com';
-  const gmailHref = 'https://mail.google.com/mail/?view=cm&fs=1&to=brownenvelope.music@gmail.com';
-  const outlookHref = 'https://outlook.live.com/mail/0/deeplink/compose?to=brownenvelope.music@gmail.com';
-  const smallScreenQuery = window.matchMedia('(max-width: 2599px)');
+  const mailtoHref = bribeEmailLink.getAttribute('data-mailto');
+  const gmailHref = bribeEmailLink.getAttribute('data-gmail');
+  const outlookHref = bribeEmailLink.getAttribute('data-outlook');
+  const mailtoFirstQuery = window.matchMedia('(max-width: 1599px)');
 
   bribeEmailLink.addEventListener('click', (e) => {
     e.preventDefault();
+    e.stopPropagation();
 
     const openedAt = Date.now();
 
-    if (smallScreenQuery.matches) {
-      window.location.href = mailtoHref;
+    if (mailtoFirstQuery.matches) {
+      if (mailtoHref) {
+        window.location.href = mailtoHref;
+      }
 
       setTimeout(() => {
         if (document.hidden) return;
         if (Date.now() - openedAt < 800) {
-          window.open(gmailHref, '_blank', 'noopener');
-          setTimeout(() => {
-            if (document.hidden) return;
-            window.open(outlookHref, '_blank', 'noopener');
-          }, 200);
+          const gmailWindow = gmailHref ? window.open(gmailHref, '_blank', 'noopener') : null;
+          if (!gmailWindow) {
+            setTimeout(() => {
+              if (document.hidden) return;
+              if (outlookHref) {
+                window.open(outlookHref, '_blank', 'noopener');
+              }
+            }, 200);
+          }
         }
       }, 650);
     } else {
-      const gmailWindow = window.open(gmailHref, '_blank', 'noopener');
+      const gmailWindow = gmailHref ? window.open(gmailHref, '_blank', 'noopener') : null;
       if (!gmailWindow) {
-        const outlookWindow = window.open(outlookHref, '_blank', 'noopener');
+        const outlookWindow = outlookHref ? window.open(outlookHref, '_blank', 'noopener') : null;
         if (!outlookWindow) {
-          window.location.href = mailtoHref;
-        }
-      } else {
-        setTimeout(() => {
-          if (document.hidden) return;
-          if (Date.now() - openedAt < 800) {
+          if (mailtoHref) {
             window.location.href = mailtoHref;
           }
-        }, 650);
+        }
       }
     }
   });
