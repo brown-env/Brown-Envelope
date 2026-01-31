@@ -340,6 +340,11 @@ body, html {
   opacity: 1;
 }
 
+.envelope.pull-envelope .card .card-category-link {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
 .envelope.pull-envelope .card {
   transform: translateX(-50%) translateY(0) translateZ(20px) translateY(-120%);
   opacity: 1;
