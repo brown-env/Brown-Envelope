@@ -135,7 +135,7 @@ body, html {
   border-radius: 2px;
   z-index: 0;
   opacity: 0;
-  transition: transform 1s ease-in-out, opacity 800ms ease-in-out;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
   overflow: hidden;
 
   /* Flex layout to pin title at top and center horizontally */
@@ -145,7 +145,7 @@ body, html {
 }
 
 .envelope.reclosing .card {
-  transition: transform 600ms ease-in-out, opacity 550ms ease-in-out;
+  transition: transform 600ms ease-in-out, opacity 600ms ease-in-out;
 }
 
 .card-image {
