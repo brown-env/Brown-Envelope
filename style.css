@@ -270,6 +270,12 @@ body, html {
     height: 120px;
   }
 }
+
+@media (max-width: 2500px) {
+  .envelope.pull-envelope .card.rotated {
+    transform: translateX(-50%) translateY(-120%) translateZ(20px) scale(1);
+  }
+}
 .card-handle-secondary {
   position: absolute;
   top: 50%;
@@ -386,6 +392,21 @@ body, html {
   transform: translateY(-50%) rotate(270deg);
   transform-origin: left center;
   text-align: center;
+}
+
+@supports (-webkit-touch-callout: none) {
+  body,
+  .category-page,
+  .page-title,
+  .card-title,
+  .card-handle,
+  .card-handle-secondary,
+  .card-handle-tertiary,
+  .card-handle-quaternary,
+  .card-handle-quinary,
+  .music-placeholder {
+    font-family: 'Special Elite', Menlo, cursive;
+  }
 }
 
 /* Landscape (horizontal card) */
