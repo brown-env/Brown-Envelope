@@ -311,6 +311,19 @@ body, html {
   bottom: 48px;
 }
 
+.bribe-copyright {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 16px;
+  text-align: center;
+  font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
+  font-size: 12px;
+  color: rgba(0,0,0,0.6);
+  letter-spacing: 0.4px;
+  z-index: 1;
+}
+
 .bribe-email {
   display: inline-flex;
   align-items: center;
