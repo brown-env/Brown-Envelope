@@ -315,12 +315,28 @@ body, html {
   pointer-events: none;
 }
 
+.card-handle-quinary {
+  position: absolute;
+  top: 50%;
+  left: 24%;
+  transform: translate(-50%, -50%) translateX(60px) translateY(130px) rotate(90deg);
+  font-family: 'Special Elite', cursive;
+  font-size: 18px;
+  color: #000;
+  z-index: 6;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+  text-align: center;
+  pointer-events: none;
+}
+
 
 /* Show categories when the card is pulled out (no position jumping) */
 .envelope.pull-envelope .card .card-handle,
 .envelope.pull-envelope .card .card-handle-secondary,
 .envelope.pull-envelope .card .card-handle-tertiary,
-.envelope.pull-envelope .card .card-handle-quaternary {
+.envelope.pull-envelope .card .card-handle-quaternary,
+.envelope.pull-envelope .card .card-handle-quinary {
   opacity: 1;
 }
 
