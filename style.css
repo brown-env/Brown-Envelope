@@ -124,12 +124,6 @@ body, html {
   transition: transform 120ms ease-in-out, box-shadow 120ms ease-in-out;
 }
 
-@keyframes flapOpen {
-  0% { transform: rotateX(0deg); }
-  /* rotate so the flap lifts up but doesn't fully flip its front face */
-  100% { transform: rotateX(-150deg) translateZ(2px); }
-}
-
 .card {
   position: absolute;
   top: 8%;
@@ -165,14 +159,14 @@ body, html {
   z-index: 1;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 2599px) {
   body:not(.home-page) .card-image {
     transform: scale(1.25);
     transform-origin: center;
   }
 }
 
-@media (max-width: 900px) and (orientation: portrait) {
+@media (max-width: 2599px) and (orientation: portrait) {
   .card {
     width: 90%;
     height: 85%;
@@ -236,6 +230,10 @@ body, html {
   align-items: flex-start;
   justify-content: center;
   font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
+  --title-size: 56px;
+  --title-margin-top: 48px;
+  --title-line-height: 1.1;
+  --back-size: 46px;
 }
 
 .category-page::before {
@@ -262,29 +260,90 @@ body, html {
   background: transparent;
   padding: 0;
   border-radius: 0;
-  font-size: 56px;
+  font-size: var(--title-size);
   color: #000;
-  margin-top: 48px;
+  margin-top: var(--title-margin-top);
   margin-bottom: 48px;
+  line-height: var(--title-line-height);
 }
 
-@media (max-width: 900px) {
+.back-link {
+  position: absolute;
+  top: calc(var(--title-margin-top) + (var(--title-size) * var(--title-line-height) / 2) - (var(--back-size) / 2));
+  left: 24px;
+  z-index: 2;
+  font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
+  font-size: var(--back-size);
+  font-weight: 900;
+  text-shadow: 0 0 1px rgba(0,0,0,0.85);
+  color: rgba(0,0,0,0.65);
+  text-decoration: none;
+  line-height: 1;
+  padding: 6px 8px;
+}
+
+.back-link:hover {
+  color: rgba(0,0,0,0.9);
+}
+
+.bribe-actions {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 48px;
+}
+
+.bribe-email {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 36px;
+  min-width: 220px;
+  border: 2px solid #dc143c;
+  color: #000;
+  text-decoration: none;
+  font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
+  font-size: 20px;
+  font-weight: 400;
+  background: rgba(220, 20, 60, 0.12);
+}
+
+.bribe-email:hover {
+  background: #dc143c;
+  color: #fff;
+}
+
+@media (max-width: 2599px) {
+  .category-page {
+    --title-size: 40px;
+    --title-margin-top: 56px;
+    --title-line-height: 1.1;
+    --back-size: 46px;
+  }
+
   .category-page .page-title {
-    font-size: 40px;
-    margin-top: 56px;
     margin-bottom: 40px;
     padding: 0 16px;
     text-align: center;
     max-width: 90vw;
-    line-height: 1.1;
     word-break: break-word;
   }
 }
 
 @media (max-width: 480px) {
+  .category-page {
+    --title-size: 32px;
+    --title-margin-top: 48px;
+    --title-line-height: 1.1;
+    --back-size: 42px;
+  }
+
   .category-page .page-title {
-    font-size: 32px;
-    margin-top: 48px;
     margin-bottom: 32px;
     max-width: 94vw;
   }
@@ -529,6 +588,7 @@ body, html {
   border: 2px solid #dc143c;
   padding: 8px 6px;
   font-size: 15px;
+  font-weight: 400;
   background: rgba(220, 20, 60, 0.18);
 }
 
@@ -686,17 +746,17 @@ body, html {
   }
 
   body.home-page .envelope.pull-envelope .card.rotated {
-    transform: translateX(-50%) translateY(-125%) translateZ(20px) rotateZ(-90deg) scale(1.15);
+    transform: translateX(-50%) translateY(-125%) translateZ(20px) rotateZ(-90deg) scale(0.7);
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 2599px) and (orientation: portrait) {
   .envelope.pull-envelope .card.rotated {
-    transform: translateX(-50%) translateY(-120%) translateZ(20px) rotateZ(0deg) scale(0.7);
+    transform: translateX(-50%) translateY(-120%) translateZ(20px) rotateZ(-90deg) scale(0.7);
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 2599px) {
   .music-page .music-envelope-container.touch-hover .flap {
     transform: rotateX(-25deg);
     transition: transform 160ms ease-in-out, box-shadow 160ms ease-in-out;
@@ -706,11 +766,6 @@ body, html {
 
 .pull-envelope {
   transform: translateY(120%);
-}
-
-@keyframes envelopeDown {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(120%); }
 }
 
 /* Import Special Elite font */
@@ -734,8 +789,7 @@ body, html {
   .card-handle-secondary,
   .card-handle-tertiary,
   .card-handle-quaternary,
-  .card-handle-quinary,
-  .music-placeholder {
+  .card-handle-quinary {
     font-family: 'Special Elite', Menlo, "Courier New", Courier, "Lucida Console", monospace;
   }
 }
