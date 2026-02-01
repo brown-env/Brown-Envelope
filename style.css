@@ -174,8 +174,8 @@ body.home-page, html.home-page {
     top: 50%;
     left: 50%;
     right: auto;
-    width: 100%;
-    max-width: 100%;
+    width: auto;
+    max-width: none;
     transform: translate(-50%, -50%) rotate(90deg);
     text-align: center;
   }
@@ -212,8 +212,8 @@ body.home-page, html.home-page {
     overflow-wrap: normal;
     left: 50%;
     right: auto;
-    width: 100%;
-    max-width: 100%;
+    width: auto;
+    max-width: none;
     transform: translate(-50%, -50%);
     text-align: center;
   }
