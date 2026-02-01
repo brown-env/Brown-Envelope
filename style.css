@@ -196,34 +196,22 @@ body.home-page, html.home-page {
   .card-handle-secondary,
   .card-handle-tertiary,
   .card-handle-quaternary,
-  .card-handle-quinary
-  
-   {
+  .card-handle-quinary {
     left: 12%;
     right: 12%;
-    transform: translateY(-50%) rotate(0deg);
+    transform: rotate(0deg);
     text-align: left;
     max-width: 76%;
     word-break: break-word;
+    font-size: clamp(14px, 3.8vw, 18px);
   }
 
-  .card-handle-secondary { top: 19%; }
-  .card-handle-tertiary { top: 39%; }
-  .card-handle-quaternary { top: 59%; }
-  .card-handle-quinary { top: 79%; }
-  .card-handle {
-    top: 87%;
-    font-size: clamp(14px, 3.8vw, 18px);
-    white-space: nowrap;
-    word-break: normal;
-    overflow-wrap: normal;
-    left: 12%;
-    right: 12%;
-    width: auto;
-    max-width: 76%;
-    transform: translateY(-50%) rotate(0deg) translate(-50px, 30px);
-  
-  }
+  .card-handle-secondary { top: 17.5%; transform: translateY(-50%) translateX(-130px); }
+  .card-handle-tertiary  { top: 36%;   transform: translateY(-50%) translateX(-47px); }
+  .card-handle-quaternary { top: 54%;  transform: translateY(-50%) translateX(98px) translateY(37px); }
+  .card-handle-quinary    { top: 72.7%; transform: translateY(-50%) translateX(98px) translateY(120px); }
+  .card-handle            { top: 80%;   transform: translateY(-50%) translateX(-47px) translateY(28px); }
+
 }
 
 .card-handle {
