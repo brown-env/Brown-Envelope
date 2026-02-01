@@ -147,6 +147,9 @@ body.home-page, html.home-page {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  --insta-gap: 0.75em;
+  --insta-font-size: 20px;
 }
 
 .envelope.reclosing .card {
@@ -164,6 +167,9 @@ body.home-page, html.home-page {
   z-index: 1;
 }
 
+/* ==========================
+   NARROW MODE (<= 1600px)
+   ========================== */
 @media (max-width: 1600px) {
   body:not(.home-page) .card-image {
     transform: scale(1.25);
@@ -171,13 +177,15 @@ body.home-page, html.home-page {
   }
 }
 
+/* ================================
+   NARROW MODE PORTRAIT (<= 1600px)
+   ================================ */
 @media (max-width: 1600px) and (orientation: portrait) {
   .card {
     width: 90%;
     height: 85%;
   }
 
-  .card-handle,
   .card-handle-secondary,
   .card-handle-tertiary,
   .card-handle-quaternary,
@@ -194,36 +202,21 @@ body.home-page, html.home-page {
   .card-handle-tertiary { top: 39%; }
   .card-handle-quaternary { top: 59%; }
   .card-handle-quinary { top: 79%; }
-  .card-handle {
-    top: 50%;
-    font-size: clamp(14px, 3.8vw, 18px);
-    white-space: nowrap;
-    word-break: normal;
-    overflow-wrap: normal;
-    left: 50%;
-    right: auto;
-    width: auto;
-    max-width: none;
-    transform: translate(-50%, -50%) rotate(90deg);
-    text-align: center;
-  }
 }
 
 .card-handle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(90deg);
+  position: relative;
   font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
-  font-size: 20px;
+  font-size: var(--insta-font-size);
   color: #000;
   z-index: 6;
   opacity: 0;
   transition: opacity 300ms ease-in-out;
   text-align: center;
   pointer-events: none;
-  width: auto;
+  width: max-content;
   max-width: none;
+  white-space: nowrap;
 }
 
 .card-handle-link {
@@ -238,6 +231,27 @@ body.home-page, html.home-page {
   color: inherit;
 }
 
+/* Instagram rail: vertically centered, left edge gap, rotation-safe */
+.home-page .instagram-rail {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding-left: var(--insta-gap);
+  pointer-events: none;
+}
+
+.home-page .instagram-rail .card-handle {
+  pointer-events: auto;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* ==========================
+  CATEGORY PAGES (BASE)
+  ========================== */
 /* Category pages */
 .category-page {
   margin: 0;
@@ -354,6 +368,9 @@ body.home-page, html.home-page {
   color: #fff;
 }
 
+/* ==========================
+   CATEGORY PAGES NARROW (<= 1600px)
+   ========================== */
 @media (max-width: 1600px) {
   .category-page {
     --title-size: 40px;
@@ -363,7 +380,7 @@ body.home-page, html.home-page {
   }
 
   .back-link {
-    top: calc(var(--title-margin-top) + (var(--title-size) * var(--title-line-height) / 2) - (var(--back-size) / 2) - 18px);
+    top: calc(var(--title-margin-top) + (var(--title-size) * var(--title-line-height) / 2) - (var(--back-size) / 2) - 10px);
   }
 
   .category-page .page-title {
@@ -375,12 +392,30 @@ body.home-page, html.home-page {
   }
 }
 
+/* ==========================
+   CATEGORY PAGES WIDE (>= 1601px)
+   ========================== */
+@media (min-width: 1601px) {
+  .category-page .page-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+  }
+}
+
+/* ==========================
+   CATEGORY PAGES MID NARROW (481px - 1600px)
+   ========================== */
 @media (max-width: 1600px) and (min-width: 481px) {
   .category-page {
     --title-margin-top: 120px;
   }
 }
 
+/* ==========================
+   CATEGORY PAGES MOBILE (<= 480px)
+   ========================== */
 @media (max-width: 480px) {
   .category-page {
     --title-size: 32px;
@@ -395,6 +430,9 @@ body.home-page, html.home-page {
   }
 }
 
+/* ==========================
+  MUSIC PAGE (BASE)
+  ========================== */
 /* Music page layout */
 .music-page {
   flex-direction: column;
@@ -665,6 +703,9 @@ body.home-page, html.home-page {
 }
 
 
+/* ==========================
+   MUSIC PAGE NARROW (<= 1200px)
+   ========================== */
 @media (max-width: 1200px) {
   .music-grid {
     gap: 32px;
@@ -672,12 +713,18 @@ body.home-page, html.home-page {
   }
 }
 
+/* ==========================
+   MUSIC PAGE NARROW (<= 1100px)
+   ========================== */
 @media (max-width: 1100px) {
   .music-grid {
     flex-wrap: wrap;
   }
 }
 
+/* ==========================
+   MUSIC PAGE MOBILE (<= 420px)
+   ========================== */
 @media (max-width: 420px) {
   .music-art,
   .music-links {
@@ -811,6 +858,9 @@ body.home-page, html.home-page {
   }
 }
 
+/* ==========================
+   MUSIC ENVELOPES NARROW (<= 1600px)
+   ========================== */
 @media (max-width: 1600px) {
   .music-page .music-envelope-container.touch-hover .flap {
     transform: rotateX(-25deg);
