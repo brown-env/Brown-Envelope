@@ -169,12 +169,6 @@ body.home-page, html.home-page {
     transform: scale(1.25);
     transform-origin: center;
   }
-
-  body.home-page .card-handle {
-    top: 78%;
-    left: 12%;
-    transform: translate(-50%, -50%) rotate(90deg);
-  }
 }
 
 @media (max-width: 1600px) and (orientation: portrait) {
@@ -196,10 +190,10 @@ body.home-page, html.home-page {
     word-break: break-word;
   }
 
-  .card-handle-secondary { top: 42%; }
-  .card-handle-tertiary { top: 50%; }
-  .card-handle-quaternary { top: 58%; }
-  .card-handle-quinary { top: 66%; }
+  .card-handle-secondary { top: 19%; }
+  .card-handle-tertiary { top: 39%; }
+  .card-handle-quaternary { top: 59%; }
+  .card-handle-quinary { top: 79%; }
   .card-handle {
     top: 50%;
     font-size: clamp(14px, 3.8vw, 18px);
