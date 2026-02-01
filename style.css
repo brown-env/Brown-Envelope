@@ -150,6 +150,7 @@ body.home-page, html.home-page {
 
   --insta-gap: 0.75em;
   --insta-font-size: 20px;
+  --insta-rail-space: 0;
 }
 
 .envelope.reclosing .card {
@@ -174,6 +175,10 @@ body.home-page, html.home-page {
   body:not(.home-page) .card-image {
     transform: scale(1.25);
     transform-origin: center;
+  }
+
+  body.home-page .card {
+    --insta-rail-space: 2.6em;
   }
 }
 
@@ -229,6 +234,17 @@ body.home-page, html.home-page {
   pointer-events: auto;
   text-decoration: none;
   color: inherit;
+}
+
+.home-page .card-links {
+  position: absolute;
+  inset: 0;
+  padding-left: var(--insta-rail-space);
+  pointer-events: none;
+}
+
+.home-page .card-links .card-category-link {
+  pointer-events: auto;
 }
 
 /* Instagram rail: vertically centered, left edge gap, rotation-safe */
