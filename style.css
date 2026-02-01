@@ -863,7 +863,6 @@ body.home-page, html.home-page {
 }
 
 @media (max-width: 1600px) {
-  .card-handle,
   .card-category-link {
     left: 10px;
   }
