@@ -133,24 +133,24 @@ body.home-page, html.home-page {
   position: absolute;
   top: 8%;
   left: 50%;
-  transform: translateX(-50%) translateY(40%) translateZ(-20px);
+  transform: translateX(-50%) translateY(40%) translateZ(-10px); /* shallower starting Z */
   width: 80%;
   height: 90%;
-  background: #C8AD7F; /* Card color */
+  background: #C8AD7F;
   border-radius: 2px;
-  z-index: 0;
+  z-index: 2; /* behind flap (z-index: 4) but above envelope base */
   opacity: 0;
-  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+  transition: transform 1s cubic-bezier(.2,.9,.2,1), opacity 1s ease-in-out; /* easing tuned */
   overflow: hidden;
-
-  /* Flex layout to pin title at top and center horizontally */
   display: flex;
   flex-direction: column;
   align-items: stretch;
 }
 
 .envelope.reclosing .card {
-  transition: transform 600ms ease-in-out, opacity 220ms ease-in-out;
+  transform: translateX(-50%) translateY(0) translateZ(0) rotateZ(0deg) scale(1); /* base position */
+  transition: transform 600ms cubic-bezier(.2,.9,.2,1), opacity 100ms ease-in-out; /* flap-like easing */
+  z-index: 2; /* always below flap z-index:4 */
 }
 
 .card-image {
@@ -168,6 +168,10 @@ body.home-page, html.home-page {
   body:not(.home-page) .card-image {
     transform: scale(1.25);
     transform-origin: center;
+  }
+
+  .card-handle {
+    transform: rotate(90deg) translateY(95px) translate(-50px, 30px);
   }
 }
 
@@ -242,12 +246,6 @@ body.home-page, html.home-page {
   white-space: nowrap;
 
   pointer-events: none;
-}
-
-@media (max-width: 1599px) {
-  .card-handle {
-    transform: rotate(90deg) translateY(95px) translate(-50px, 30px);
-  }
 }
 
 .card-handle-link {
@@ -838,15 +836,21 @@ body.home-page, html.home-page {
 }
 
 .envelope.pull-envelope .card {
-  transform: translateX(-50%) translateY(0) translateZ(20px) translateY(-120%);
+  transform:
+    translateX(-50%)
+    translateY(0)
+    translateZ(20px)
+    translateY(-120%);
   opacity: 1;
+  transition: transform 1s cubic-bezier(.2,.9,.2,1), opacity 160ms ease-out;
   z-index: 5;
 }
 
 .envelope.pull-envelope .card.rotated {
   transform: translateX(-50%) translateY(-135%) translateZ(20px) rotateZ(-90deg) scale(1.55);
-  transition: transform 800ms ease-in-out;
+  transition: transform 800ms cubic-bezier(.2,.9,.2,1); /* matches flap physics */
 }
+
 
 @media (max-width: 1600px) and (orientation: portrait) {
   body.home-page {
@@ -872,7 +876,8 @@ body.home-page, html.home-page {
   }
 
   .envelope.pull-envelope .card.rotated {
-    transform: translateX(-50%) translateY(-120%) translateZ(20px) rotateZ(-90deg) scale(0.7);
+    transform: translateX(-50%) translateY(-125%) translateZ(20px) rotateZ(-90deg) scale(0.7);
+    transition: transform 800ms cubic-bezier(.2,.9,.2,1);
   }
 }
 
