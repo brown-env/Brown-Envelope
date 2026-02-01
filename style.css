@@ -169,16 +169,6 @@ body.home-page, html.home-page {
     transform: scale(1.25);
     transform-origin: center;
   }
-
-  body.home-page .card-handle {
-    top: 50%;
-    left: 50%;
-    right: auto;
-    width: auto;
-    max-width: none;
-    transform: translate(-50%, -50%) rotate(90deg);
-    text-align: center;
-  }
 }
 
 @media (max-width: 1600px) and (orientation: portrait) {
@@ -214,20 +204,16 @@ body.home-page, html.home-page {
     right: auto;
     width: auto;
     max-width: none;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-
-  body.home-page .card-handle {
     transform: translate(-50%, -50%) rotate(90deg);
+    text-align: center;
   }
 }
 
 .card-handle {
   position: absolute;
   top: 50%;
-  left: 24%;
-  transform: translate(-50%, -50%) translateX(-24px) rotate(90deg);
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
   font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
   font-size: 20px;
   color: #000;
@@ -236,6 +222,8 @@ body.home-page, html.home-page {
   transition: opacity 300ms ease-in-out;
   text-align: center;
   pointer-events: none;
+  width: auto;
+  max-width: none;
 }
 
 .card-handle-link {
