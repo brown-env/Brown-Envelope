@@ -169,6 +169,10 @@ body.home-page, html.home-page {
     transform: scale(1.25);
     transform-origin: center;
   }
+
+  .card-handle {
+    transform: rotate(90deg) translateY(95px) translate(-50px, 30px);
+  }
 }
 
 @media (max-width: 1600px) and (orientation: portrait) {
@@ -188,11 +192,13 @@ body.home-page, html.home-page {
   z-index: 8;
 }
 
+  .card-handle,
   .card-handle-secondary,
   .card-handle-tertiary,
   .card-handle-quaternary,
   .card-handle-quinary
-  {
+  
+   {
     left: 12%;
     right: 12%;
     transform: translateY(-50%) rotate(0deg);
@@ -205,6 +211,19 @@ body.home-page, html.home-page {
   .card-handle-tertiary { top: 39%; }
   .card-handle-quaternary { top: 59%; }
   .card-handle-quinary { top: 79%; }
+  .card-handle {
+    top: 87%;
+    font-size: clamp(14px, 3.8vw, 18px);
+    white-space: nowrap;
+    word-break: normal;
+    overflow-wrap: normal;
+    left: 12%;
+    right: 12%;
+    width: auto;
+    max-width: 76%;
+    transform: translateY(-50%) rotate(0deg) translate(-50px, 30px);
+  
+  }
 }
 
 .card-handle {
@@ -863,6 +882,7 @@ body.home-page, html.home-page {
 }
 
 @media (max-width: 1600px) {
+  .card-handle,
   .card-category-link {
     left: 10px;
   }
