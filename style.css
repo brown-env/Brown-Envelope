@@ -840,6 +840,10 @@ body.home-page, html.home-page {
     transition: transform 140ms ease-in-out, box-shadow 140ms ease-in-out;
     box-shadow: 0 6px 10px rgba(0,0,0,0.08);
   }
+
+  .music-page .music-envelope-container:not(.is-openable) .seal-text--flap {
+    opacity: 1;
+  }
 }
 
 .pull-envelope {
