@@ -169,10 +169,6 @@ body.home-page, html.home-page {
     transform: scale(1.25);
     transform-origin: center;
   }
-
-  .card-handle {
-    transform: rotate(90deg) translateY(95px) translate(-50px, 30px);
-  }
 }
 
 @media (max-width: 1600px) and (orientation: portrait) {
@@ -246,6 +242,12 @@ body.home-page, html.home-page {
   white-space: nowrap;
 
   pointer-events: none;
+}
+
+@media (max-width: 1600px) {
+  .card-handle {
+    transform: rotate(90deg) translateY(95px) translate(-50px, 30px);
+  }
 }
 
 .card-handle-link {
