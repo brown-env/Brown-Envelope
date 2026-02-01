@@ -176,12 +176,25 @@ body.home-page, html.home-page {
     width: 90%;
     height: 85%;
   }
+.card-nav {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  gap: 28px;
+
+  z-index: 8;
+}
 
   .card-handle,
   .card-handle-secondary,
   .card-handle-tertiary,
   .card-handle-quaternary,
-  .card-handle-quinary {
+  .card-handle-quinary
+  
+   {
     left: 12%;
     right: 12%;
     transform: translateY(-50%) rotate(0deg);
@@ -211,10 +224,10 @@ body.home-page, html.home-page {
 
 .card-handle {
   position: absolute;
-  top: 16px;
+  top: 216px;
   left: 12px;
 
-  transform: none;
+  transform: rotate(90deg) translateY(95px);
   rotate: 0deg;
 
   font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
@@ -712,7 +725,7 @@ body.home-page, html.home-page {
   position: absolute;
   top: 50%;
   left: 24%;
-  transform: translate(-50%, -50%) translateX(60px) translateY(40px) rotate(90deg);
+  transform: translate(-50%, -50%) translateX(105px) translateY(40px) rotate(90deg);
   font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
   font-size: 18px;
   color: #000;
@@ -727,7 +740,7 @@ body.home-page, html.home-page {
   position: absolute;
   top: 50%;
   left: 24%;
-  transform: translate(-50%, -50%) translateX(60px) translateY(130px) rotate(90deg);
+  transform: translate(-50%, -50%) translateX(105px) translateY(130px) rotate(90deg);
   font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
   font-size: 18px;
   color: #000;
@@ -742,7 +755,7 @@ body.home-page, html.home-page {
   position: absolute;
   top: 50%;
   left: 24%;
-  transform: translate(-50%, -50%) translateX(60px) translateY(-140px) rotate(90deg);
+  transform: translate(-50%, -50%) translateX(105px) translateY(-140px) rotate(90deg);
   font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
   font-size: 18px;
   color: #000;
@@ -757,7 +770,7 @@ body.home-page, html.home-page {
   position: absolute;
   top: 50%;
   left: 24%;
-  transform: translate(-50%, -50%) translateX(60px) translateY(-50px) rotate(90deg);
+  transform: translate(-50%, -50%) translateX(105px) translateY(-50px) rotate(90deg);
   font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
   font-size: 18px;
   color: #000;
@@ -767,19 +780,6 @@ body.home-page, html.home-page {
   text-align: center;
   pointer-events: none;
 }
-
-/* === Left-aligned card links (override rotated layout) === */
-.card-category-link {
-  position: absolute;
-  left: 12px;
-  transform: none;
-  rotate: 0deg;
-  text-align: left;
-}
-.card-handle-secondary  { top: 52px; }
-.card-handle-tertiary   { top: 84px; }
-.card-handle-quaternary { top: 116px; }
-.card-handle-quinary    { top: 148px; }
 
 /* Show categories when the card is pulled out (no position jumping) */
 .envelope.pull-envelope .card .card-handle,
@@ -825,7 +825,7 @@ body.home-page, html.home-page {
   }
 
   body.home-page .envelope.pull-envelope .card {
-    transform: translateX(-50%) translateY(-115%) translateZ(20px);
+    transform: translateX(-50%) translateY(-105%) translateZ(20px);
   }
 
   body.home-page .envelope.pull-envelope .card.rotated {
