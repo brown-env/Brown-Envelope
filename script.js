@@ -92,23 +92,36 @@ if (musicPage) {
     musicEnvelopes.forEach((container) => container.classList.remove('touch-hover'));
   };
 
+  const clearTouchBudge = () => {
+    musicEnvelopes.forEach((container) => container.classList.remove('touch-budge'));
+  };
+
   musicEnvelopes.forEach((container) => {
     container.addEventListener('click', (e) => {
       if (!smallScreenQuery.matches) return;
-      if (!container.classList.contains('is-openable')) return;
       e.preventDefault();
 
-      const isActive = container.classList.contains('touch-hover');
-      clearTouchHover();
-      if (!isActive) {
-        container.classList.add('touch-hover');
+      if (container.classList.contains('is-openable')) {
+        const isActive = container.classList.contains('touch-hover');
+        clearTouchHover();
+        if (!isActive) {
+          container.classList.add('touch-hover');
+        }
+        return;
       }
+
+      clearTouchBudge();
+      container.classList.add('touch-budge');
+      setTimeout(() => {
+        container.classList.remove('touch-budge');
+      }, 220);
     });
   });
 
   window.addEventListener('resize', () => {
     if (!smallScreenQuery.matches) {
       clearTouchHover();
+      clearTouchBudge();
     }
   });
 }

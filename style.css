@@ -834,6 +834,12 @@ body.home-page, html.home-page {
     transform: rotateX(-140deg) translateZ(2px);
     box-shadow: 0 12px 20px rgba(0,0,0,0.16);
   }
+
+  .music-page .music-envelope-container.touch-budge .flap {
+    transform: rotateX(-10deg);
+    transition: transform 140ms ease-in-out, box-shadow 140ms ease-in-out;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.08);
+  }
 }
 
 .pull-envelope {
