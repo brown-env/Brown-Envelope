@@ -1203,18 +1203,19 @@ body.home-page, html.home-page {
   }
 
   .card-text {
-    font-size: 6.5px;
-    line-height: 0.9;
-    padding: 0 3px;
+    font-size: 8px;
+    line-height: 1.1;
+    padding: 2px 6px;
+    min-height: 48px;
     overflow: hidden;
     display: -webkit-box;
-    line-clamp: 4;
-    -webkit-line-clamp: 4;
+    line-clamp: 6;
+    -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
   }
 
   .card-corner {
-    font-size: 10px;
+    font-size: 8px;
   }
 
   .card-corner.top {
@@ -1229,7 +1230,7 @@ body.home-page, html.home-page {
 
   .card-corner .rank,
   .card-corner .suit {
-    font-size: 9px;
+    font-size: 7px;
     line-height: 1;
   }
 
