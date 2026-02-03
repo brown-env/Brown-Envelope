@@ -14,6 +14,161 @@
 <body class="category-page">
   <a class="back-link" href="index.html" aria-label="Back to home">←</a>
   <div class="page-title">Bribe Us</div>
+  <div class="bribe-subtitle">Beat the House</div>
+  <section class="bribe-poker" aria-labelledby="poker-title">
+    <div class="poker-stats" aria-live="polite">
+      <div class="poker-chip">You: <span id="poker-player-chips">500</span></div>
+      <div class="poker-chip">Pot: <span id="poker-pot">0</span></div>
+      <div class="poker-chip">House: <span id="poker-computer-chips">500</span></div>
+    </div>
+    <div class="poker-controls">
+      <label class="poker-bet" for="poker-bet">Bet
+        <input id="poker-bet" type="number" min="5" step="1" value="5">
+      </label>
+      <button class="poker-button" type="button" id="poker-deal">Deal</button>
+      <button class="poker-button" type="button" id="poker-check" disabled>Check</button>
+      <button class="poker-button" type="button" id="poker-bet-btn" disabled>Bet</button>
+      <button class="poker-button" type="button" id="poker-call" disabled>Call</button>
+      <button class="poker-button ghost" type="button" id="poker-fold" disabled>Fold</button>
+    </div>
+    <div class="poker-table poker-table--computer" role="list" aria-live="polite" aria-label="House hand">
+      <div class="poker-row-label">House</div>
+      <button class="poker-card poker-card--computer" type="button" data-owner="computer" data-index="0" aria-pressed="false" role="listitem">
+        <span class="card-inner">
+          <span class="card-face card-front">?</span>
+          <span class="card-face card-back">
+            <span class="card-corner top"><span class="rank">A</span><span class="suit">♠</span></span>
+            <span class="card-center">
+              <span class="card-suit">♠</span>
+              <span class="card-text"></span>
+            </span>
+            <span class="card-corner bottom"><span class="rank">A</span><span class="suit">♠</span></span>
+          </span>
+        </span>
+      </button>
+      <button class="poker-card poker-card--computer" type="button" data-owner="computer" data-index="1" aria-pressed="false" role="listitem">
+        <span class="card-inner">
+          <span class="card-face card-front">?</span>
+          <span class="card-face card-back">
+            <span class="card-corner top"><span class="rank">2</span><span class="suit">♥</span></span>
+            <span class="card-center">
+              <span class="card-suit">♥</span>
+              <span class="card-text"></span>
+            </span>
+            <span class="card-corner bottom"><span class="rank">2</span><span class="suit">♥</span></span>
+          </span>
+        </span>
+      </button>
+    </div>
+    <div class="poker-table poker-table--community" role="list" aria-live="polite" aria-label="Community cards">
+      <div class="poker-row-label">Board</div>
+      <button class="poker-card poker-card--community" type="button" data-owner="community" data-index="0" aria-pressed="false" role="listitem">
+        <span class="card-inner">
+          <span class="card-face card-front">?</span>
+          <span class="card-face card-back">
+            <span class="card-corner top"><span class="rank">A</span><span class="suit">♠</span></span>
+            <span class="card-center">
+              <span class="card-suit">♠</span>
+              <span class="card-text"></span>
+            </span>
+            <span class="card-corner bottom"><span class="rank">A</span><span class="suit">♠</span></span>
+          </span>
+        </span>
+      </button>
+      <button class="poker-card poker-card--community" type="button" data-owner="community" data-index="1" aria-pressed="false" role="listitem">
+        <span class="card-inner">
+          <span class="card-face card-front">?</span>
+          <span class="card-face card-back">
+            <span class="card-corner top"><span class="rank">2</span><span class="suit">♥</span></span>
+            <span class="card-center">
+              <span class="card-suit">♥</span>
+              <span class="card-text"></span>
+            </span>
+            <span class="card-corner bottom"><span class="rank">2</span><span class="suit">♥</span></span>
+          </span>
+        </span>
+      </button>
+      <button class="poker-card poker-card--community" type="button" data-owner="community" data-index="2" aria-pressed="false" role="listitem">
+        <span class="card-inner">
+          <span class="card-face card-front">?</span>
+          <span class="card-face card-back">
+            <span class="card-corner top"><span class="rank">3</span><span class="suit">♦</span></span>
+            <span class="card-center">
+              <span class="card-suit">♦</span>
+              <span class="card-text"></span>
+            </span>
+            <span class="card-corner bottom"><span class="rank">3</span><span class="suit">♦</span></span>
+          </span>
+        </span>
+      </button>
+      <button class="poker-card poker-card--community" type="button" data-owner="community" data-index="3" aria-pressed="false" role="listitem">
+        <span class="card-inner">
+          <span class="card-face card-front">?</span>
+          <span class="card-face card-back">
+            <span class="card-corner top"><span class="rank">4</span><span class="suit">♣</span></span>
+            <span class="card-center">
+              <span class="card-suit">♣</span>
+              <span class="card-text"></span>
+            </span>
+            <span class="card-corner bottom"><span class="rank">4</span><span class="suit">♣</span></span>
+          </span>
+        </span>
+      </button>
+      <button class="poker-card poker-card--community" type="button" data-owner="community" data-index="4" aria-pressed="false" role="listitem">
+        <span class="card-inner">
+          <span class="card-face card-front">?</span>
+          <span class="card-face card-back">
+            <span class="card-corner top"><span class="rank">5</span><span class="suit">♠</span></span>
+            <span class="card-center">
+              <span class="card-suit">♠</span>
+              <span class="card-text"></span>
+            </span>
+            <span class="card-corner bottom"><span class="rank">5</span><span class="suit">♠</span></span>
+          </span>
+        </span>
+      </button>
+    </div>
+    <div class="poker-table poker-table--player" role="list" aria-live="polite" aria-label="Your hand">
+      <div class="poker-row-label">You</div>
+      <button class="poker-card" type="button" data-owner="player" data-index="0" aria-pressed="false" role="listitem">
+        <span class="card-inner">
+          <span class="card-face card-front">?</span>
+          <span class="card-face card-back">
+            <span class="card-corner top"><span class="rank">A</span><span class="suit">♠</span></span>
+            <span class="card-center">
+              <span class="card-suit">♠</span>
+              <span class="card-text"></span>
+            </span>
+            <span class="card-corner bottom"><span class="rank">A</span><span class="suit">♠</span></span>
+          </span>
+        </span>
+      </button>
+      <button class="poker-card" type="button" data-owner="player" data-index="1" aria-pressed="false" role="listitem">
+        <span class="card-inner">
+          <span class="card-face card-front">?</span>
+          <span class="card-face card-back">
+            <span class="card-corner top"><span class="rank">2</span><span class="suit">♥</span></span>
+            <span class="card-center">
+              <span class="card-suit">♥</span>
+              <span class="card-text"></span>
+            </span>
+            <span class="card-corner bottom"><span class="rank">2</span><span class="suit">♥</span></span>
+          </span>
+        </span>
+      </button>
+    </div>
+    <div class="poker-message" id="poker-message" aria-live="polite"></div>
+  </section>
+  <div class="poker-modal" id="poker-modal" aria-hidden="true">
+    <div class="poker-modal__content" role="dialog" aria-modal="true" aria-label="Immram purchase">
+      <button class="poker-modal__back" type="button" id="poker-modal-back" aria-label="Back">←</button>
+      <button class="poker-modal__close" type="button" id="poker-modal-close" aria-label="Close">×</button>
+      <div class="poker-modal__title">Bribe</div>
+      <div class="poker-modal__actions">
+        <button class="poker-modal__bribe" type="button" id="poker-modal-buy">€1000</button>
+      </div>
+    </div>
+  </div>
   <div class="bribe-actions">
     <a class="bribe-email" href="#" data-mailto="mailto:brownenvelope.music@gmail.com" data-gmail="https://mail.google.com/mail/?view=cm&fs=1&to=brownenvelope.music@gmail.com" data-outlook="https://outlook.live.com/mail/0/deeplink/compose?to=brownenvelope.music@gmail.com">Email</a>
   </div>

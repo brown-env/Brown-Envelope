@@ -11,6 +11,10 @@ body, html {
   overflow-y: auto;
 }
 
+.is-hidden {
+  display: none !important;
+}
+
 body.home-page, html.home-page {
   overflow: hidden;
 }
@@ -192,10 +196,18 @@ body.home-page, html.home-page {
   color: inherit;
 }
 
+.card-handle-link:hover {
+  color: #dc143c;
+}
+
 .card-category-link {
   pointer-events: auto;
   text-decoration: none;
   color: inherit;
+}
+
+.card-category-link:hover {
+  color: #dc143c;
 }
 
 /* Category pages */
@@ -244,6 +256,17 @@ body.home-page, html.home-page {
   width: 100%;
 }
 
+.bribe-subtitle {
+  position: relative;
+  z-index: 1;
+  margin-top: -24px;
+  margin-bottom: 24px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.75);
+}
+
 .back-link {
   position: absolute;
   top: var(--title-margin-top);
@@ -263,24 +286,51 @@ body.home-page, html.home-page {
   color: rgba(0,0,0,0.9);
 }
 
+.live-soon {
+  position: relative;
+  z-index: 1;
+  margin-top: 12px;
+  font-size: clamp(48px, 10vw, 120px);
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #000;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.live-soon:hover {
+  color: #dc143c;
+}
+
+.live-page {
+  min-height: 100vh;
+  justify-content: center;
+  padding-bottom: 0;
+}
+
+.live-page .live-soon {
+  margin-top: 0;
+}
+
+.live-page .bribe-copyright {
+  margin-top: auto;
+  margin-bottom: 16px;
+}
+
 .bribe-actions {
-  position: absolute;
+  position: relative;
   z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  left: 0;
-  right: 0;
-  bottom: 48px;
+  margin-top: 24px;
 }
 
 .bribe-copyright {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 16px;
+  position: relative;
   text-align: center;
+  margin-top: 12px;
   font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
   font-size: 12px;
   color: rgba(0,0,0,0.6);
@@ -307,6 +357,405 @@ body.home-page, html.home-page {
   background: #dc143c;
   color: #fff;
 }
+
+.bribe-poker {
+  position: relative;
+  z-index: 1;
+  width: min(900px, 92vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 36px;
+  padding: 24px;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  backdrop-filter: blur(2px);
+}
+
+.poker-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.poker-rules {
+  font-size: 13px;
+  opacity: 0.85;
+  max-width: 520px;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.poker-rules ul {
+  margin: 6px 0 0 16px;
+  padding: 0;
+}
+
+.poker-title {
+  font-size: 28px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.poker-subtitle {
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+.poker-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.poker-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.poker-chip {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+.poker-bet {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.poker-bet input {
+  width: 80px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.4);
+  font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
+  background: #fffdf8;
+}
+
+
+.poker-button {
+  font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 2px solid #000;
+  background: #D4B67C;
+  color: #000;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+
+.poker-button.ghost {
+  background: transparent;
+}
+
+.poker-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.poker-button:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.poker-table {
+  width: 100%;
+  max-width: min(900px, 92vw);
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 6px 4px 12px;
+  align-items: center;
+}
+
+.poker-row-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.7;
+  margin-right: 0;
+  min-width: 48px;
+  text-align: right;
+}
+
+.poker-table--computer,
+.poker-table--player,
+.poker-table--community {
+  justify-content: center;
+}
+
+.poker-table--computer .poker-card {
+  filter: grayscale(0.1);
+}
+
+.poker-table--community {
+  padding-top: 0;
+  padding-bottom: 18px;
+}
+
+.poker-table--community .poker-card {
+  background: transparent;
+}
+
+.poker-table--player .poker-card,
+.poker-table--computer .poker-card,
+.poker-table--community .poker-card {
+  cursor: default;
+}
+
+.poker-legend {
+  font-size: 12px;
+  opacity: 0.7;
+  text-align: center;
+}
+
+.poker-card {
+  position: relative;
+  width: clamp(68px, 14vw, 120px);
+  height: clamp(96px, 20vw, 170px);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  perspective: 800px;
+  padding: 0;
+}
+
+.poker-card:disabled {
+  cursor: default;
+}
+
+.poker-card .card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  transform-style: preserve-3d;
+  transition: transform 420ms ease;
+}
+
+.poker-card.revealed .card-inner {
+  transform: rotateY(180deg);
+}
+
+.poker-card .card-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  border: 2px solid rgba(0,0,0,0.4);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+}
+
+.poker-card .card-front {
+  background: repeating-linear-gradient(45deg, rgba(0,0,0,0.08) 0 6px, rgba(255,255,255,0.1) 6px 12px),
+    #C8AD7F;
+  font-size: 22px;
+  letter-spacing: 4px;
+}
+
+.poker-card .card-back {
+  background: #fffdf8;
+  transform: rotateY(180deg);
+  padding: 10px;
+  gap: 10px;
+  text-align: center;
+  color: #111;
+}
+
+.poker-card.red .card-back,
+.poker-card.red .card-corner,
+.poker-card.red .card-suit {
+  color: #b11226;
+}
+
+.card-corner {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.card-corner.top {
+  top: 8px;
+  left: 8px;
+}
+
+.card-corner.bottom {
+  bottom: 8px;
+  right: 8px;
+  transform: rotate(180deg);
+}
+
+.card-corner .rank {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.card-corner .suit {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.card-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.card-suit {
+  font-size: 34px;
+}
+
+.card-text {
+  font-size: 12px;
+  line-height: 1.2;
+  padding: 0 4px;
+}
+
+.poker-card .hold-tag {
+  position: absolute;
+  top: -8px;
+  right: -6px;
+  background: #dc143c;
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: 0.6px;
+  padding: 3px 6px;
+  border-radius: 999px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 160ms ease, transform 160ms ease;
+  z-index: 2;
+}
+
+.poker-card.held .hold-tag {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.poker-card.held .card-face {
+  border-color: #dc143c;
+  box-shadow: 0 0 0 2px rgba(220,20,60,0.35), 0 6px 14px rgba(0,0,0,0.18);
+}
+
+.poker-message {
+  min-height: 24px;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.poker-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+  z-index: 10;
+}
+
+.poker-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.poker-modal__content {
+  position: relative;
+  background: #fffdf8;
+  border: 2px solid #000;
+  border-radius: 16px;
+  padding: 28px 32px;
+  min-width: min(320px, 90vw);
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+}
+
+.poker-modal__back {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.poker-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.poker-modal__title {
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+.poker-modal__actions {
+  display: flex;
+  justify-content: center;
+}
+
+
+.poker-modal__bribe {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 36px;
+  min-width: 220px;
+  border: 2px solid #dc143c;
+  color: #000;
+  text-decoration: none;
+  font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
+  font-size: 20px;
+  font-weight: 400;
+  background: rgba(220, 20, 60, 0.12);
+  cursor: pointer;
+}
+
+.poker-modal__bribe:hover {
+  background: #dc143c;
+  color: #fff;
+}
+
 
 /* Music page layout */
 .music-page {
@@ -723,6 +1172,54 @@ body.home-page, html.home-page {
     position: relative;
     bottom: auto;
     margin-top: 32px;
+  }
+
+  .bribe-poker {
+    padding: 18px;
+    margin-bottom: 28px;
+  }
+
+  .poker-title {
+    font-size: 22px;
+  }
+
+  .poker-subtitle {
+    font-size: 14px;
+  }
+
+  .poker-table {
+    gap: 10px;
+  }
+
+  .poker-row-label {
+    min-width: 48px;
+    font-size: 11px;
+  }
+
+  .poker-card {
+    width: clamp(58px, 12vw, 92px);
+    height: clamp(86px, 18vw, 135px);
+  }
+
+  .card-suit {
+    font-size: 24px;
+  }
+
+  .card-text {
+    font-size: 10px;
+    line-height: 1.15;
+  }
+
+  .card-corner {
+    font-size: 10px;
+  }
+
+  .poker-card .card-face {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.14);
+  }
+
+  .poker-bet input {
+    width: 64px;
   }
 
   .bribe-email {
