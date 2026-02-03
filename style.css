@@ -664,9 +664,9 @@ body.home-page, html.home-page {
 
 @media (max-width: 1400px) {
   .category-page {
-    --title-size: 44px;
+    --title-size: 38px;
     --back-size: 44px;
-    --title-margin-top: 40px;
+    --title-margin-top: 64px;
     padding-top: 40px;
     padding-bottom: 40px;
   }
@@ -676,12 +676,12 @@ body.home-page, html.home-page {
   }
 
   .back-link {
-    top: 40px;
+    top: 64px;
     left: 16px;
   }
 
   .category-page .page-title {
-    margin-top: 40px;
+    margin-top: 64px;
     margin-bottom: 32px;
   }
 
@@ -696,6 +696,7 @@ body.home-page, html.home-page {
     align-items: center;
     width: 100%;
     max-width: 420px;
+    gap: 20px;
   }
 
   .music-art {
@@ -709,13 +710,11 @@ body.home-page, html.home-page {
   }
 
   .music-links {
-    width: min(340px, 88vw);
+    width: 350px;
+    max-width: calc(100vw - 40px);
     justify-content: center;
     flex-wrap: wrap;
-  }
-
-  .music-links a {
-    flex: 1 1 100%;
+    margin-top: 8px;
   }
 
   .bribe-actions {
@@ -742,6 +741,18 @@ body.home-page, html.home-page {
 
   .category-page .envelope.pull-envelope .card.rotated {
     transform: translateX(-50%) translateY(-135%) translateZ(20px) rotateZ(-90deg) scale(0.9);
+  }
+
+  .home-page .envelope.pull-envelope .card {
+    width: min(80%, calc(100vw - 100px));
+  }
+
+  .home-page .envelope.pull-envelope .card.rotated {
+    width: min(80%, calc(100vw - 100px));
+  }
+
+  .home-page .envelope.reclosing .card {
+    transition: transform 1000ms cubic-bezier(.2,.9,.2,1), opacity 100ms ease-in-out;
   }
 }
 
