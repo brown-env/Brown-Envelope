@@ -178,6 +178,7 @@ if (pokerSection) {
   const playerCards = Array.from(pokerSection.querySelectorAll('.poker-card[data-owner="player"]'));
   const computerCards = Array.from(pokerSection.querySelectorAll('.poker-card[data-owner="computer"]'));
   const communityCards = Array.from(pokerSection.querySelectorAll('.poker-card[data-owner="community"]'));
+  const lyricLayoutQuery = window.matchMedia('(max-width: 1300px)');
 
   const suits = [
     { name: 'Spades', icon: '♠', color: 'black' },
@@ -314,6 +315,55 @@ if (pokerSection) {
     }
   };
 
+  const applyLyricLayout = (textEl, phrase) => {
+    if (!textEl) return;
+
+    textEl.style.removeProperty('--lyric-size');
+    textEl.style.removeProperty('--lyric-shift');
+
+    if (!phrase || !lyricLayoutQuery.matches) {
+      return;
+    }
+
+    const trimmed = phrase.replace(/\s+/g, ' ').trim();
+    const length = trimmed.length;
+
+    let size = 8;
+    let shift = 0;
+
+    if (length <= 24) {
+      size = 9;
+      shift = -2;
+    } else if (length <= 40) {
+      size = 8;
+      shift = -1;
+    } else if (length <= 60) {
+      size = 7.5;
+      shift = 0;
+    } else if (length <= 85) {
+      size = 7;
+      shift = 1;
+    } else {
+      size = 6.5;
+      shift = 2;
+    }
+
+    textEl.style.setProperty('--lyric-size', `${size}px`);
+    textEl.style.setProperty('--lyric-shift', `${shift}px`);
+  };
+
+  const syncLyricLayout = () => {
+    pokerSection.querySelectorAll('.card-text').forEach((textEl) => {
+      applyLyricLayout(textEl, textEl.textContent || '');
+    });
+  };
+
+  if (lyricLayoutQuery.addEventListener) {
+    lyricLayoutQuery.addEventListener('change', syncLyricLayout);
+  } else if (lyricLayoutQuery.addListener) {
+    lyricLayoutQuery.addListener(syncLyricLayout);
+  }
+
   const updateCard = (button, card, faceDown) => {
     const cornerRanks = button.querySelectorAll('.card-corner .rank');
     const cornerSuits = button.querySelectorAll('.card-corner .suit');
@@ -329,7 +379,10 @@ if (pokerSection) {
         suitEl.textContent = '';
       });
       if (suit) suit.textContent = '';
-      if (text) text.textContent = '';
+      if (text) {
+        text.textContent = '';
+        applyLyricLayout(text, '');
+      }
       return;
     }
 
@@ -341,7 +394,10 @@ if (pokerSection) {
       suitEl.textContent = card.suitIcon;
     });
     if (suit) suit.textContent = card.suitIcon;
-    if (text) text.textContent = card.phrase || '';
+    if (text) {
+      text.textContent = card.phrase || '';
+      applyLyricLayout(text, card.phrase || '');
+    }
 
     if (faceDown) {
       button.classList.remove('revealed');
