@@ -392,10 +392,6 @@ body.home-page, html.home-page {
   transition: transform 120ms ease-in-out, box-shadow 120ms ease-in-out;
 }
 
-.music-envelope-container .card {
-  opacity: 0;
-}
-
 .seal-text {
   position: absolute;
   left: 50%;
@@ -743,14 +739,6 @@ body.home-page, html.home-page {
     bottom: auto;
     margin-top: 32px;
     padding-bottom: 24px;
-  }
-
-  .category-page .envelope.pull-envelope .card {
-    transform: translateX(-50%) translateY(-120%) translateZ(20px) scale(0.9);
-  }
-
-  .category-page .envelope.pull-envelope .card.rotated {
-    transform: translateX(-50%) translateY(-135%) translateZ(20px) rotateZ(-90deg) scale(0.9);
   }
 
   .home-page .envelope.pull-envelope .card {
