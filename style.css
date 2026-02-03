@@ -1203,8 +1203,8 @@ body.home-page, html.home-page {
   }
 
   .card-text {
-    font-size: 8px;
-    line-height: 1;
+    font-size: 7px;
+    line-height: 0.95;
     overflow: hidden;
     display: -webkit-box;
     line-clamp: 3;
@@ -1214,6 +1214,22 @@ body.home-page, html.home-page {
 
   .card-corner {
     font-size: 10px;
+  }
+
+  .card-corner.top {
+    top: 4px;
+    left: 4px;
+  }
+
+  .card-corner.bottom {
+    bottom: 4px;
+    right: 4px;
+  }
+
+  .card-corner .rank,
+  .card-corner .suit {
+    font-size: 9px;
+    line-height: 1;
   }
 
 
