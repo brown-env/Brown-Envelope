@@ -367,9 +367,39 @@ if (pokerSection) {
     }
   };
 
+  const formatLyricLines = (phrase) => {
+    const words = phrase.replace(/\s+/g, ' ').trim().split(' ').filter(Boolean);
+    const lines = [];
+    for (let i = 0; i < words.length; i += 2) {
+      lines.push(words.slice(i, i + 2).join(' '));
+    }
+    return lines;
+  };
+
+  const renderLyricText = (textEl, phrase) => {
+    if (!textEl) return;
+
+    const safePhrase = phrase || '';
+    textEl.dataset.phrase = safePhrase;
+
+    if (!safePhrase) {
+      textEl.textContent = '';
+      return;
+    }
+
+    if (lyricLayoutQuery.matches) {
+      const lines = formatLyricLines(safePhrase);
+      textEl.innerHTML = lines.map((line) => `<span class="lyric-line">${line}</span>`).join('');
+    } else {
+      textEl.textContent = safePhrase;
+    }
+  };
+
   const syncLyricLayout = () => {
     pokerSection.querySelectorAll('.card-text').forEach((textEl) => {
-      applyLyricLayout(textEl, textEl.textContent || '');
+      const phrase = textEl.dataset.phrase || textEl.textContent || '';
+      renderLyricText(textEl, phrase);
+      applyLyricLayout(textEl, phrase);
     });
   };
 
@@ -396,6 +426,7 @@ if (pokerSection) {
       if (suit) suit.textContent = '';
       if (text) {
         text.textContent = '';
+        delete text.dataset.phrase;
         text.classList.remove('centered');
         applyLyricLayout(text, '');
       }
@@ -412,7 +443,7 @@ if (pokerSection) {
     if (suit) suit.textContent = card.suitIcon;
     if (text) {
       const phrase = card.phrase || '';
-      text.textContent = phrase;
+      renderLyricText(text, phrase);
       text.classList.toggle('centered', centeredPhrases.has(normalizePhrase(phrase)));
       applyLyricLayout(text, phrase);
     }
@@ -713,8 +744,11 @@ if (pokerSection) {
     if (callAmount < houseToCall) {
       currentBet = computerBet;
       awaitingPlayer = false;
-      setMessage(`House is all-in for ${callAmount}. Next round.`);
-      advanceStage(`House is all-in for ${callAmount}.`);
+      const allInNote = callAmount === 0
+        ? 'House is all-in.'
+        : `House is all-in for ${callAmount}.`;
+      setMessage(`${allInNote} Next round.`);
+      advanceStage(allInNote);
       return;
     }
 
