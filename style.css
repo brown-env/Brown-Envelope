@@ -1210,6 +1210,7 @@ body.home-page, html.home-page {
     line-height: 1.15;
     overflow: hidden;
     display: -webkit-box;
+    line-clamp: 3;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
   }
