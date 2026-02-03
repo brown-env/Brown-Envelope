@@ -1203,12 +1203,13 @@ body.home-page, html.home-page {
   }
 
   .card-text {
-    font-size: 7px;
-    line-height: 0.95;
+    font-size: 6.5px;
+    line-height: 0.9;
+    padding: 0 3px;
     overflow: hidden;
     display: -webkit-box;
-    line-clamp: 3;
-    -webkit-line-clamp: 3;
+    line-clamp: 4;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
   }
 
