@@ -246,7 +246,7 @@ body.home-page, html.home-page {
 
 .back-link {
   position: absolute;
-  top: 80px;
+  top: var(--title-margin-top);
   left: 24px;
   z-index: 2;
   font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
@@ -255,8 +255,8 @@ body.home-page, html.home-page {
   text-shadow: 0 0 1px rgba(0,0,0,0.85);
   color: rgba(0,0,0,0.65);
   text-decoration: none;
-  line-height: 1;
-  padding: 6px 8px;
+  line-height: var(--title-line-height);
+  padding: 0;
 }
 
 .back-link:hover {
@@ -662,7 +662,7 @@ body.home-page, html.home-page {
   transform: translateY(120%);
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1300px) {
   .flap {
     transition: transform 450ms cubic-bezier(.2,.9,.2,1), box-shadow 140ms ease-in-out;
   }
@@ -680,11 +680,6 @@ body.home-page, html.home-page {
 
   .category-page::before {
     background: url('small screen page texture.jpg') center/cover no-repeat;
-  }
-
-  .back-link {
-    top: calc(var(--title-margin-top) + (var(--title-size) * var(--title-line-height) * 0.5) - (var(--back-size) * 0.5));
-    left: 16px;
   }
 
   .category-page .page-title {
@@ -760,7 +755,7 @@ body.home-page, html.home-page {
 
   .home-page .envelope.pull-envelope .card.rotated {
     width: min(80%, calc(100vw - 100px));
-    transform: translateX(-50%) translateY(-135%) translateZ(20px) rotateZ(-90deg) scale(0.6);
+    transform: translateX(-50%) translateY(-135%) translateZ(20px) rotateZ(-90deg) scale(0.7);
   }
 
   .home-page .envelope.reclosing .card {
