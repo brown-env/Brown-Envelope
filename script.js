@@ -630,16 +630,28 @@ if (pokerSection) {
 
   const maybeHouseAction = () => {
     const willBet = Math.random() < 0.35;
-    if (!willBet) {
+    const willBluff = Math.random() < 0.1;
+    if (!willBet && !willBluff) {
+      advanceStage('House checks.');
+      return;
+    }
+
+    const maxBet = Math.min(computerChips, playerChips);
+    if (maxBet <= 0) {
       advanceStage('House checks.');
       return;
     }
 
     const betValue = Number(betInput?.value) || 0;
-    const bet = normalizeBet(betValue, Math.min(computerChips, playerChips));
+    let bet = normalizeBet(betValue, maxBet);
+
     if (bet <= 0) {
       advanceStage('House checks.');
       return;
+    }
+
+    if (bet > computerChips) {
+      bet = computerChips;
     }
 
     computerChips -= bet;
@@ -648,7 +660,12 @@ if (pokerSection) {
     currentBet = computerBet;
     awaitingPlayer = true;
     updateChips();
-    setMessage(`House bets ${bet}. Your move: call or fold.`);
+
+    if (computerChips === 0) {
+      setMessage(`House goes all-in for ${bet}. Your move: call or fold.`);
+    } else {
+      setMessage(`House bets ${bet}. Your move: call or fold.`);
+    }
     setActionState({ canCheck: false, canBet: false, canCall: true, canFold: true });
   };
 
@@ -683,7 +700,7 @@ if (pokerSection) {
     currentBet = playerBet;
     updateChips();
 
-    const aiCalls = Math.random() < 0.65;
+    const aiCalls = Math.random() < 0.9;
     if (!aiCalls) {
       const potWon = pot;
       playerChips += pot;
@@ -695,12 +712,22 @@ if (pokerSection) {
       return;
     }
 
-    const callAmount = Math.min(currentBet - computerBet, computerChips);
+    const houseToCall = currentBet - computerBet;
+    const callAmount = Math.min(houseToCall, computerChips);
     computerChips -= callAmount;
     pot += callAmount;
     computerBet += callAmount;
-    currentBet = playerBet;
     updateChips();
+
+    if (callAmount < houseToCall) {
+      currentBet = computerBet;
+      awaitingPlayer = false;
+      setMessage(`House is all-in for ${callAmount}. Next round.`);
+      advanceStage(`House is all-in for ${callAmount}.`);
+      return;
+    }
+
+    currentBet = playerBet;
     setMessage(`House calls ${callAmount}. Next round.`);
     endBettingRoundIfMatched(`House calls ${callAmount}.`);
   };
@@ -790,7 +817,7 @@ if (pokerSection) {
     renderBoard();
     updateChips();
 
-    setMessage('New hand. Call, bet, or fold.');
+    setMessage('New hand. Check or bet.');
     setActionState({
       canCheck: currentBet === playerBet,
       canBet: true,
