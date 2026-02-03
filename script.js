@@ -346,8 +346,8 @@ if (pokerSection) {
       return;
     }
 
-    const maxSize = 9;
-    const minSize = 4.5;
+    const maxSize = 8;
+    const minSize = 3;
     const step = 0.25;
     let size = maxSize;
 

@@ -1167,20 +1167,20 @@ body.home-page, html.home-page {
   }
 
   .poker-card .card-back {
-    padding: 8px;
-    gap: 8px;
-  }
-
-  .card-center {
+    padding: 6px;
     gap: 6px;
   }
 
+  .card-center {
+    gap: 4px;
+  }
+
   .card-text {
-    font-size: var(--lyric-size, 8px);
-    line-height: 1.05;
-    padding: 2px 4px;
-    height: 54px;
-    margin: 4px 0;
+    font-size: var(--lyric-size, 7px);
+    line-height: 1;
+    padding: 2px 3px;
+    height: 44px;
+    margin: 2px 0;
     overflow: hidden;
     display: block;
     transform: translateY(var(--lyric-shift, 0));
@@ -1190,7 +1190,7 @@ body.home-page, html.home-page {
   }
 
   .card-corner {
-    font-size: 8px;
+    font-size: 6px;
   }
 
   .card-corner.top {
@@ -1205,7 +1205,7 @@ body.home-page, html.home-page {
 
   .card-corner .rank,
   .card-corner .suit {
-    font-size: 7px;
+    font-size: 6px;
     line-height: 1;
   }
 
