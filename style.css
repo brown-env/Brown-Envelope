@@ -664,7 +664,7 @@ body.home-page, html.home-page {
 
 @media (max-width: 1300px) {
   .back-link {
-    top: calc(var(--title-margin-top) + 50px);
+    top: calc(var(--title-margin-top) + 25px);
   }
 
   .flap {
@@ -759,7 +759,7 @@ body.home-page, html.home-page {
 
   .home-page .envelope.pull-envelope .card.rotated {
     width: min(80%, calc(100vw - 100px));
-    transform: translateX(-50%) translateY(-135%) translateZ(20px) rotateZ(-90deg) scale(0.7);
+    transform: translateX(-50%) translateY(-135%) translateZ(20px) rotateZ(-90deg) scale(0.75);
   }
 
   .home-page .envelope.reclosing .card {
