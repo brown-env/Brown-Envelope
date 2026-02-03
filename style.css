@@ -382,30 +382,6 @@ body.home-page, html.home-page {
   gap: 6px;
 }
 
-.poker-rules {
-  font-size: 13px;
-  opacity: 0.85;
-  max-width: 520px;
-  text-align: left;
-  line-height: 1.4;
-}
-
-.poker-rules ul {
-  margin: 6px 0 0 16px;
-  padding: 0;
-}
-
-.poker-title {
-  font-size: 28px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.poker-subtitle {
-  font-size: 16px;
-  opacity: 0.8;
-}
-
 .poker-controls {
   display: flex;
   flex-wrap: wrap;
@@ -524,12 +500,6 @@ body.home-page, html.home-page {
   cursor: default;
 }
 
-.poker-legend {
-  font-size: 12px;
-  opacity: 0.7;
-  text-align: center;
-}
-
 .poker-card {
   position: relative;
   width: clamp(68px, 14vw, 120px);
@@ -641,32 +611,13 @@ body.home-page, html.home-page {
   line-height: 1.05;
   padding: 0 4px;
   font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
+  text-align: left;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
-.poker-card .hold-tag {
-  position: absolute;
-  top: -8px;
-  right: -6px;
-  background: #dc143c;
-  color: #fff;
-  font-size: 10px;
-  letter-spacing: 0.6px;
-  padding: 3px 6px;
-  border-radius: 999px;
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 160ms ease, transform 160ms ease;
-  z-index: 2;
-}
-
-.poker-card.held .hold-tag {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.poker-card.held .card-face {
-  border-color: #dc143c;
-  box-shadow: 0 0 0 2px rgba(220,20,60,0.35), 0 6px 14px rgba(0,0,0,0.18);
+.card-text.centered {
+  text-align: center;
 }
 
 .poker-message {
@@ -1180,14 +1131,6 @@ body.home-page, html.home-page {
     margin-bottom: 28px;
   }
 
-  .poker-title {
-    font-size: 22px;
-  }
-
-  .poker-subtitle {
-    font-size: 14px;
-  }
-
   .poker-table {
     gap: 10px;
   }
@@ -1204,20 +1147,15 @@ body.home-page, html.home-page {
 
   .card-text {
     font-size: var(--lyric-size, 8px);
-    line-height: 1.1;
-    padding: 2px 6px;
-    min-height: 48px;
+    line-height: 1.05;
+    padding: 2px 4px;
+    min-height: 54px;
     overflow: hidden;
     display: -webkit-box;
-    line-clamp: 6;
-    -webkit-line-clamp: 6;
+    line-clamp: 7;
+    -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
     transform: translateY(var(--lyric-shift, 0));
-  }
-
-  .poker-card .card-back .card-center {
-    justify-content: var(--lyric-justify, center);
-    padding-top: var(--lyric-top-pad, 0);
   }
 
   .card-corner {

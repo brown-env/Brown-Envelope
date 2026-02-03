@@ -179,6 +179,27 @@ if (pokerSection) {
   const computerCards = Array.from(pokerSection.querySelectorAll('.poker-card[data-owner="computer"]'));
   const communityCards = Array.from(pokerSection.querySelectorAll('.poker-card[data-owner="community"]'));
   const lyricLayoutQuery = window.matchMedia('(max-width: 1300px)');
+  const normalizePhrase = (value) => value
+    .replace(/\s+/g, ' ')
+    .trim()
+    .replace(/[’']/g, "'")
+    .toLowerCase();
+  const centeredPhrases = new Set([
+    'Hold on, wait',
+    'You lie, sometimes',
+    'Visions to shapes',
+    'Word goes around',
+    'Please don’t stop',
+    'And I still doubt',
+    'But time won’t stop',
+    'Voices turn to colours',
+    'Your house is flooding',
+    'Now I can’t concentrate',
+    'The walls will melt away',
+    'Today you set me straight',
+    'The carpet floor is soaking',
+    'Keep speaking but say nothing'
+  ].map(normalizePhrase));
 
   const suits = [
     { name: 'Spades', icon: '♠', color: 'black' },
@@ -321,23 +342,38 @@ if (pokerSection) {
     textEl.style.removeProperty('--lyric-size');
     textEl.style.removeProperty('--lyric-shift');
 
-    const centerEl = textEl.closest('.card-center');
-    if (centerEl) {
-      centerEl.style.removeProperty('--lyric-justify');
-      centerEl.style.removeProperty('--lyric-top-pad');
-    }
-
     if (!phrase || !lyricLayoutQuery.matches) {
       return;
     }
 
-    const words = phrase.trim().split(/\s+/).filter(Boolean);
-    const isShort = words.length <= 7;
+    const trimmed = phrase.replace(/\s+/g, ' ').trim();
+    const length = trimmed.length;
 
-    if (centerEl) {
-      centerEl.style.setProperty('--lyric-justify', isShort ? 'center' : 'flex-start');
-      centerEl.style.setProperty('--lyric-top-pad', isShort ? '0px' : '6px');
+    let size = 8;
+    let shift = 0;
+
+    if (length <= 24) {
+      size = 9;
+      shift = -2;
+    } else if (length <= 38) {
+      size = 8.5;
+      shift = -1;
+    } else if (length <= 60) {
+      size = 7.5;
+      shift = 0;
+    } else if (length <= 75) {
+      size = 7;
+      shift = 1;
+    } else if (length <= 95) {
+      size = 6.5;
+      shift = 2;
+    } else {
+      size = 6;
+      shift = 2;
     }
+
+    textEl.style.setProperty('--lyric-size', `${size}px`);
+    textEl.style.setProperty('--lyric-shift', `${shift}px`);
   };
 
   const syncLyricLayout = () => {
@@ -369,6 +405,7 @@ if (pokerSection) {
       if (suit) suit.textContent = '';
       if (text) {
         text.textContent = '';
+        text.classList.remove('centered');
         applyLyricLayout(text, '');
       }
       return;
@@ -383,8 +420,10 @@ if (pokerSection) {
     });
     if (suit) suit.textContent = card.suitIcon;
     if (text) {
-      text.textContent = card.phrase || '';
-      applyLyricLayout(text, card.phrase || '');
+      const phrase = card.phrase || '';
+      text.textContent = phrase;
+      text.classList.toggle('centered', centeredPhrases.has(normalizePhrase(phrase)));
+      applyLyricLayout(text, phrase);
     }
 
     if (faceDown) {
