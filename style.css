@@ -309,7 +309,7 @@ body.home-page, html.home-page {
 }
 
 .live-page .live-soon {
-  margin-top: 0;
+  margin-top: 80px;
 }
 
 .live-page .bribe-copyright {
@@ -1208,10 +1208,18 @@ body.home-page, html.home-page {
   .card-text {
     font-size: 10px;
     line-height: 1.15;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
 
   .card-corner {
     font-size: 10px;
+  }
+
+  .card-suit {
+    display: none;
   }
 
   .poker-card .card-face {
