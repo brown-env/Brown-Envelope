@@ -662,6 +662,89 @@ body.home-page, html.home-page {
   transform: translateY(120%);
 }
 
+@media (max-width: 1400px) {
+  .category-page {
+    --title-size: 44px;
+    --back-size: 44px;
+    --title-margin-top: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .category-page::before {
+    background: url('small screen page texture.jpg') center/cover no-repeat;
+  }
+
+  .back-link {
+    top: 40px;
+    left: 16px;
+  }
+
+  .category-page .page-title {
+    margin-top: 40px;
+    margin-bottom: 32px;
+  }
+
+  .music-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 0 20px;
+  }
+
+  .music-card {
+    align-items: center;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .music-art {
+    width: min(340px, 88vw);
+    height: min(340px, 88vw);
+  }
+
+  .music-envelope-container {
+    width: min(240px, 70vw);
+    height: min(360px, 100vw);
+  }
+
+  .music-links {
+    width: min(340px, 88vw);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .music-links a {
+    flex: 1 1 100%;
+  }
+
+  .bribe-actions {
+    position: relative;
+    bottom: auto;
+    margin-top: 32px;
+  }
+
+  .bribe-email {
+    width: min(280px, 80vw);
+    justify-content: center;
+  }
+
+  .bribe-copyright {
+    position: relative;
+    bottom: auto;
+    margin-top: 32px;
+    padding-bottom: 24px;
+  }
+
+  .category-page .envelope.pull-envelope .card {
+    transform: translateX(-50%) translateY(-120%) translateZ(20px) scale(0.9);
+  }
+
+  .category-page .envelope.pull-envelope .card.rotated {
+    transform: translateX(-50%) translateY(-135%) translateZ(20px) rotateZ(-90deg) scale(0.9);
+  }
+}
+
 /* Import Special Elite font */
 @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&display=swap');
@@ -673,115 +756,6 @@ body.home-page, html.home-page {
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-}
-
-@media (max-width: 1400px) {
-  body,
-  html {
-    align-items: flex-start;
-  }
-
-  body.home-page,
-  html.home-page {
-    overflow-y: auto;
-  }
-
-  .envelope-container {
-    width: 240px;
-    height: 400px;
-    margin-top: 40px;
-  }
-
-  .category-page {
-    --title-size: 40px;
-    --back-size: 40px;
-    --title-margin-top: 56px;
-    padding-bottom: 64px;
-  }
-
-  .category-page .page-title {
-    margin-bottom: 32px;
-  }
-
-  .back-link {
-    top: 32px;
-    left: 16px;
-  }
-
-  .music-grid {
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-    padding: 0 24px;
-  }
-
-  .music-art {
-    width: 280px;
-    height: 280px;
-  }
-
-  .music-envelope-container {
-    width: 200px;
-    height: 300px;
-  }
-
-  .bribe-actions {
-    bottom: 32px;
-  }
-
-  .bribe-email {
-    font-size: 18px;
-    padding: 12px 28px;
-  }
-}
-
-@media (max-width: 600px) {
-  .envelope-container {
-    width: 200px;
-    height: 340px;
-    margin-top: 24px;
-  }
-
-  .card {
-    width: 86%;
-    height: 92%;
-  }
-
-  .card-handle,
-  .card-handle-secondary,
-  .card-handle-tertiary,
-  .card-handle-quaternary,
-  .card-handle-quinary {
-    font-size: 14px;
-  }
-
-  .card-handle {
-    left: -64px;
-  }
-
-  .category-page {
-    --title-size: 32px;
-    --back-size: 32px;
-    --title-margin-top: 48px;
-    padding-bottom: 56px;
-  }
-
-  .music-art {
-    width: 240px;
-    height: 240px;
-  }
-
-  .music-envelope-container {
-    width: 180px;
-    height: 270px;
-  }
-
-  .bribe-email {
-    min-width: 0;
-    width: 80vw;
-    max-width: 320px;
-    justify-content: center;
-  }
 }
 
 @supports (-webkit-touch-callout: none) {
