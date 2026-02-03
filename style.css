@@ -660,7 +660,7 @@ body.home-page, html.home-page {
 
 @media (max-width: 1300px) {
   .back-link {
-    top: calc(var(--title-margin-top) + 25px);
+    top: calc(var(--title-margin-top) + 30px);
   }
 
   .flap {
