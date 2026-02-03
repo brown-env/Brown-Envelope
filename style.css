@@ -612,8 +612,9 @@ body.home-page, html.home-page {
   padding: 0 4px;
   font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
   text-align: left;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
 }
 
 .card-text.centered {
@@ -1156,6 +1157,9 @@ body.home-page, html.home-page {
     -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
     transform: translateY(var(--lyric-shift, 0));
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
   }
 
   .card-corner {

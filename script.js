@@ -356,19 +356,22 @@ if (pokerSection) {
       size = 9;
       shift = -2;
     } else if (length <= 38) {
-      size = 8.5;
+      size = 8.25;
       shift = -1;
     } else if (length <= 60) {
-      size = 7.5;
+      size = 7.25;
       shift = 0;
     } else if (length <= 75) {
-      size = 7;
+      size = 6.75;
       shift = 1;
     } else if (length <= 95) {
-      size = 6.5;
+      size = 6.25;
+      shift = 2;
+    } else if (length <= 120) {
+      size = 5.75;
       shift = 2;
     } else {
-      size = 6;
+      size = 5.25;
       shift = 2;
     }
 
