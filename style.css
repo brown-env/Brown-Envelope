@@ -676,7 +676,7 @@ body.home-page, html.home-page {
   }
 
   .back-link {
-    top: 64px;
+    top: var(--title-margin-top);
     left: 16px;
   }
 
@@ -724,7 +724,11 @@ body.home-page, html.home-page {
   }
 
   .bribe-email {
-    width: min(280px, 80vw);
+    width: 350px;
+    max-width: calc(100vw - 40px);
+    height: 26px;
+    padding: 8px 6px;
+    font-size: 15px;
     justify-content: center;
   }
 
