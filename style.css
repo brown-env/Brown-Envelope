@@ -663,6 +663,13 @@ body.home-page, html.home-page {
 }
 
 @media (max-width: 1400px) {
+  .flap {
+    transition: transform 450ms cubic-bezier(.2,.9,.2,1), box-shadow 140ms ease-in-out;
+  }
+
+  .envelope.reclosing .card {
+    transition: transform 1100ms cubic-bezier(.2,.9,.2,1), opacity 100ms ease-in-out;
+  }
   .category-page {
     --title-size: 38px;
     --back-size: 44px;
@@ -753,10 +760,11 @@ body.home-page, html.home-page {
 
   .home-page .envelope.pull-envelope .card.rotated {
     width: min(80%, calc(100vw - 100px));
+    transform: translateX(-50%) translateY(-135%) translateZ(20px) rotateZ(-90deg) scale(0.6);
   }
 
   .home-page .envelope.reclosing .card {
-    transition: transform 1000ms cubic-bezier(.2,.9,.2,1), opacity 100ms ease-in-out;
+    transition: transform 1100ms cubic-bezier(.2,.9,.2,1), opacity 100ms ease-in-out;
   }
 }
 

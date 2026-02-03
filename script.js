@@ -75,7 +75,7 @@ function onFlapClick() {
       };
 
       homeEnvelope.addEventListener('transitionend', onEnvelopeTransition);
-    }, 1000);
+    }, 1100);
   }
 }
 
