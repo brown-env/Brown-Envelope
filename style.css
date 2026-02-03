@@ -149,7 +149,7 @@ body.home-page, html.home-page {
 
 .envelope.reclosing .card {
   transform: translateX(-50%) translateY(0) translateZ(0) rotateZ(0deg) scale(1); /* base position */
-  transition: transform 600ms cubic-bezier(.2,.9,.2,1), opacity 100ms ease-in-out; /* flap-like easing */
+  transition: transform 800ms cubic-bezier(.2,.9,.2,1), opacity 100ms ease-in-out; /* flap-like easing */
   z-index: 2; /* always below flap z-index:4 */
 }
 
@@ -673,6 +673,115 @@ body.home-page, html.home-page {
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+}
+
+@media (max-width: 1400px) {
+  body,
+  html {
+    align-items: flex-start;
+  }
+
+  body.home-page,
+  html.home-page {
+    overflow-y: auto;
+  }
+
+  .envelope-container {
+    width: 240px;
+    height: 400px;
+    margin-top: 40px;
+  }
+
+  .category-page {
+    --title-size: 40px;
+    --back-size: 40px;
+    --title-margin-top: 56px;
+    padding-bottom: 64px;
+  }
+
+  .category-page .page-title {
+    margin-bottom: 32px;
+  }
+
+  .back-link {
+    top: 32px;
+    left: 16px;
+  }
+
+  .music-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 0 24px;
+  }
+
+  .music-art {
+    width: 280px;
+    height: 280px;
+  }
+
+  .music-envelope-container {
+    width: 200px;
+    height: 300px;
+  }
+
+  .bribe-actions {
+    bottom: 32px;
+  }
+
+  .bribe-email {
+    font-size: 18px;
+    padding: 12px 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .envelope-container {
+    width: 200px;
+    height: 340px;
+    margin-top: 24px;
+  }
+
+  .card {
+    width: 86%;
+    height: 92%;
+  }
+
+  .card-handle,
+  .card-handle-secondary,
+  .card-handle-tertiary,
+  .card-handle-quaternary,
+  .card-handle-quinary {
+    font-size: 14px;
+  }
+
+  .card-handle {
+    left: -64px;
+  }
+
+  .category-page {
+    --title-size: 32px;
+    --back-size: 32px;
+    --title-margin-top: 48px;
+    padding-bottom: 56px;
+  }
+
+  .music-art {
+    width: 240px;
+    height: 240px;
+  }
+
+  .music-envelope-container {
+    width: 180px;
+    height: 270px;
+  }
+
+  .bribe-email {
+    min-width: 0;
+    width: 80vw;
+    max-width: 320px;
+    justify-content: center;
+  }
 }
 
 @supports (-webkit-touch-callout: none) {
