@@ -321,35 +321,23 @@ if (pokerSection) {
     textEl.style.removeProperty('--lyric-size');
     textEl.style.removeProperty('--lyric-shift');
 
+    const centerEl = textEl.closest('.card-center');
+    if (centerEl) {
+      centerEl.style.removeProperty('--lyric-justify');
+      centerEl.style.removeProperty('--lyric-top-pad');
+    }
+
     if (!phrase || !lyricLayoutQuery.matches) {
       return;
     }
 
-    const trimmed = phrase.replace(/\s+/g, ' ').trim();
-    const length = trimmed.length;
+    const words = phrase.trim().split(/\s+/).filter(Boolean);
+    const isShort = words.length <= 7;
 
-    let size = 8;
-    let shift = 0;
-
-    if (length <= 24) {
-      size = 9;
-      shift = -2;
-    } else if (length <= 40) {
-      size = 8;
-      shift = -1;
-    } else if (length <= 60) {
-      size = 7.5;
-      shift = 0;
-    } else if (length <= 85) {
-      size = 7;
-      shift = 1;
-    } else {
-      size = 6.5;
-      shift = 2;
+    if (centerEl) {
+      centerEl.style.setProperty('--lyric-justify', isShort ? 'center' : 'flex-start');
+      centerEl.style.setProperty('--lyric-top-pad', isShort ? '0px' : '6px');
     }
-
-    textEl.style.setProperty('--lyric-size', `${size}px`);
-    textEl.style.setProperty('--lyric-shift', `${shift}px`);
   };
 
   const syncLyricLayout = () => {

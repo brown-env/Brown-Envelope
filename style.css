@@ -1215,6 +1215,11 @@ body.home-page, html.home-page {
     transform: translateY(var(--lyric-shift, 0));
   }
 
+  .poker-card .card-back .card-center {
+    justify-content: var(--lyric-justify, center);
+    padding-top: var(--lyric-top-pad, 0);
+  }
+
   .card-corner {
     font-size: 8px;
   }
