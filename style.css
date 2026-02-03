@@ -1150,12 +1150,9 @@ body.home-page, html.home-page {
     font-size: var(--lyric-size, 8px);
     line-height: 1.05;
     padding: 2px 4px;
-    min-height: 54px;
+    height: 54px;
     overflow: hidden;
-    display: -webkit-box;
-    line-clamp: 7;
-    -webkit-line-clamp: 7;
-    -webkit-box-orient: vertical;
+    display: block;
     transform: translateY(var(--lyric-shift, 0));
     overflow-wrap: normal;
     word-break: normal;

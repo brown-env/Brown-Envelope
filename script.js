@@ -346,37 +346,25 @@ if (pokerSection) {
       return;
     }
 
-    const trimmed = phrase.replace(/\s+/g, ' ').trim();
-    const length = trimmed.length;
+    const maxSize = 9;
+    const minSize = 4.5;
+    const step = 0.25;
+    let size = maxSize;
 
-    let size = 8;
-    let shift = 0;
+    textEl.style.setProperty('--lyric-shift', '0px');
 
-    if (length <= 24) {
-      size = 9;
-      shift = -2;
-    } else if (length <= 38) {
-      size = 8.25;
-      shift = -1;
-    } else if (length <= 60) {
-      size = 7.25;
-      shift = 0;
-    } else if (length <= 75) {
-      size = 6.75;
-      shift = 1;
-    } else if (length <= 95) {
-      size = 6.25;
-      shift = 2;
-    } else if (length <= 120) {
-      size = 5.75;
-      shift = 2;
-    } else {
-      size = 5.25;
-      shift = 2;
+    while (size >= minSize) {
+      textEl.style.setProperty('--lyric-size', `${size}px`);
+
+      const overflowsHeight = textEl.scrollHeight > textEl.clientHeight;
+      const overflowsWidth = textEl.scrollWidth > textEl.clientWidth;
+
+      if (!overflowsHeight && !overflowsWidth) {
+        break;
+      }
+
+      size -= step;
     }
-
-    textEl.style.setProperty('--lyric-size', `${size}px`);
-    textEl.style.setProperty('--lyric-shift', `${shift}px`);
   };
 
   const syncLyricLayout = () => {
