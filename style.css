@@ -52,6 +52,10 @@ body.home-page, html.home-page {
   filter: saturate(0.95);
 }
 
+.envelope:hover {
+  box-shadow: 0 10px 26px rgba(0,0,0,0.22), inset 0 0 0 1px rgba(0,0,0,0.05);
+}
+
 .flap {
   position: absolute;
   top: 0;
@@ -88,7 +92,7 @@ body.home-page, html.home-page {
 /* Slight flap movement on hover */
 .flap:hover {
   /* baseline closed hover: gentle, not too sensitive */
-  transform: rotateX(-25deg);
+  transform: rotateX(-25deg) translateY(-1px);
   transition: transform 160ms ease-in-out, box-shadow 160ms ease-in-out;
   box-shadow: 0 8px 14px rgba(0,0,0,0.12);
   pointer-events: auto;
@@ -295,7 +299,7 @@ body.home-page, html.home-page {
   letter-spacing: 2px;
   color: #000;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .live-soon:hover {
@@ -304,12 +308,12 @@ body.home-page, html.home-page {
 
 .live-page {
   min-height: 100vh;
-  justify-content: center;
-  padding-bottom: 0;
+  justify-content: flex-start;
+  padding-bottom: 80px;
 }
 
 .live-page .live-soon {
-  margin-top: 80px;
+  margin-top: 72px;
 }
 
 .live-page .bribe-copyright {
@@ -330,7 +334,7 @@ body.home-page, html.home-page {
 .bribe-copyright {
   position: relative;
   text-align: center;
-  margin-top: 12px;
+  margin-top: auto;
   font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
   font-size: 12px;
   color: rgba(0,0,0,0.6);
@@ -632,6 +636,15 @@ body.home-page, html.home-page {
   opacity: 0.85;
 }
 
+.poker-hint {
+  margin-top: 10px;
+  font-size: 12px;
+  text-align: center;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.65);
+}
+
 .poker-modal {
   position: fixed;
   inset: 0;
@@ -773,6 +786,44 @@ body.home-page, html.home-page {
 .music-envelope-container {
   width: 230px;
   height: 350px;
+  position: relative;
+}
+
+.music-envelope-container.is-locked .envelope {
+  filter: grayscale(0.2) saturate(0.85);
+  opacity: 0.92;
+}
+
+.music-envelope-container.is-locked::after {
+  content: "Sealed";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
+  font-size: 16px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.85);
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  text-shadow: 0.5px 0.5px 0 rgba(0,0,0,0.35),
+    0 0 1.5px rgba(0,0,0,0.35);
+  filter: blur(0.15px);
+  pointer-events: none;
+  z-index: 7;
+}
+
+.music-envelope-container.is-static .flap {
+  pointer-events: none;
+}
+
+.music-envelope-container.is-static .flap:hover,
+.music-envelope-container.is-static .flap:active {
+  transform: none;
+  box-shadow: inset 0 -2px 4px rgba(0,0,0,0.12);
 }
 
 .music-envelope-container .envelope {
@@ -798,7 +849,7 @@ body.home-page, html.home-page {
 
 /* Give April/June the same dramatic hover tilt */
 .music-page .music-envelope-container .flap:hover {
-  transform: rotateX(-30deg) translateZ(2px);
+  transform: rotateX(-30deg) translateZ(2px) translateY(-1px);
   box-shadow: 0 12px 20px rgba(0,0,0,0.18);
   transition: transform 160ms ease-in-out, box-shadow 160ms ease-in-out;
 }
