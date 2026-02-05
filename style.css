@@ -284,6 +284,17 @@ body.home-page, html.home-page {
   z-index: 0;
 }
 
+.page-header {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  margin-top: var(--title-margin-top);
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .category-page .page-title {
   position: relative;
   z-index: 1;
@@ -292,18 +303,17 @@ body.home-page, html.home-page {
   border-radius: 0;
   font-size: var(--title-size);
   color: #000;
-  margin-top: var(--title-margin-top);
-  margin-bottom: 48px;
+  margin: 0;
   line-height: var(--title-line-height);
   text-align: center;
   width: 100%;
 }
 
-
 .back-link {
   position: absolute;
-  top: var(--title-margin-top);
   left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 2;
   font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
   font-size: var(--back-size);
@@ -682,9 +692,6 @@ body.home-page, html.home-page {
 }
 
 @media (max-width: 1400px) {
-  .back-link {
-    top: calc(var(--title-margin-top) + 100px);
-  }
 
   .flap {
     transition: transform 450ms cubic-bezier(.2,.9,.2,1), box-shadow 140ms ease-in-out;
@@ -706,8 +713,7 @@ body.home-page, html.home-page {
     background: url('small screen page texture.jpg') center/cover no-repeat;
   }
 
-  .category-page .page-title {
-    margin-top: calc(var(--title-margin-top) + 40px);
+  .page-header {
     margin-bottom: 32px;
   }
 
