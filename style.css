@@ -683,7 +683,7 @@ body.home-page, html.home-page {
 
 @media (max-width: 1400px) {
   .back-link {
-    top: var(--title-margin-top);
+    top: calc(var(--title-margin-top) + 100px);
   }
 
   .flap {
@@ -707,7 +707,7 @@ body.home-page, html.home-page {
   }
 
   .category-page .page-title {
-    margin-top: var(--title-margin-top);
+    margin-top: calc(var(--title-margin-top) + 40px);
     margin-bottom: 32px;
   }
 
