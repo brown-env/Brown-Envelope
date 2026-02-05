@@ -341,7 +341,6 @@ body.home-page, html.home-page {
   min-height: 100vh;
   justify-content: flex-start;
   padding-bottom: 24px;
-  --title-margin-top: 28px;
 }
 
 .live-page .live-soon {
@@ -442,27 +441,6 @@ body.home-page, html.home-page {
   opacity: 0.92;
 }
 
-.music-envelope-container.is-locked::after {
-  content: "Sealed";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) rotate(-90deg);
-  font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
-  font-size: 16px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: rgba(0,0,0,0.85);
-  padding: 0;
-  border: none;
-  border-radius: 0;
-  background: transparent;
-  text-shadow: 0.5px 0.5px 0 rgba(0,0,0,0.35),
-    0 0 1.5px rgba(0,0,0,0.35);
-  filter: blur(0.15px);
-  pointer-events: none;
-  z-index: 7;
-}
 
 .music-envelope-container.is-static .flap {
   pointer-events: none;
@@ -705,7 +683,7 @@ body.home-page, html.home-page {
 
 @media (max-width: 1400px) {
   .back-link {
-    top: calc(var(--title-margin-top) + 60px);
+    top: var(--title-margin-top);
   }
 
   .flap {
@@ -718,21 +696,18 @@ body.home-page, html.home-page {
   .category-page {
     --title-size: 38px;
     --back-size: 44px;
-    --title-margin-top: 48px;
+    --title-margin-top: 32px;
     padding-top: 40px;
     padding-bottom: 40px;
   }
 
-  .live-page {
-    --title-margin-top: 32px;
-  }
 
   .category-page::before {
     background: url('small screen page texture.jpg') center/cover no-repeat;
   }
 
   .category-page .page-title {
-    margin-top: 64px;
+    margin-top: var(--title-margin-top);
     margin-bottom: 32px;
   }
 
