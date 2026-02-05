@@ -11,10 +11,6 @@ body, html {
   overflow-y: auto;
 }
 
-.is-hidden {
-  height: auto;
-}
-
 body.home-page, html.home-page {
   overflow: hidden;
 }
@@ -23,10 +19,7 @@ body.home-page, html.home-page {
   position: relative;
   width: 300px;
   height: 500px;
-}
-
-/* perspective for 3D flap folding */
-.envelope-container {
+  /* perspective for 3D flap folding */
   perspective: 1200px;
   perspective-origin: center top;
 }
@@ -500,6 +493,7 @@ body.home-page, html.home-page {
   border-left: 1px solid rgba(0,0,0,0.06);
   border-right: 1px solid rgba(0,0,0,0.06);
   border-top: 1px solid rgba(0,0,0,0.06);
+  cursor: default;
 }
 
 /* Give April/June the same dramatic hover tilt */
@@ -594,75 +588,7 @@ body.home-page, html.home-page {
   pointer-events: none;
 }
 
-.music-envelope-container .flap {
-  cursor: default;
-}
 
-.wax-seal {
-  position: absolute;
-  left: 50%;
-  top: 12%;
-  transform: translate(-50%, -50%);
-  z-index: 6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  transition: transform 320ms ease, opacity 320ms ease;
-}
-
-.wax-text {
-  font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
-  font-size: 20px;
-  color: #dc143c;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  z-index: 1;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.15);
-}
-
-.music-page .music-envelope-container.is-openable.touch-hover .seal-text--flap {
-  opacity: 0;
-}
-
-.music-page .music-envelope-container.is-openable.touch-hover .wax-seal {
-  transform: translate(-50%, -50%) rotate(-18deg) translateY(10px) scale(0.92);
-  opacity: 0.25;
-}
-
-.redacted-x {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-}
-
-.redacted-x::before,
-.redacted-x::after {
-  content: "";
-  position: absolute;
-  width: 6px;
-  height: 140%;
-  background: #dc143c;
-}
-
-.redacted-x::before {
-  transform: rotate(45deg);
-}
-
-.redacted-x::after {
-  transform: rotate(-45deg);
-}
-
-.redacted-label {
-  position: relative;
-  z-index: 1;
-  color: #dc143c;
-  font-size: 32px;
-  letter-spacing: 2px;
-}
 
 .bandcamp-embed {
   width: 100%;
@@ -779,7 +705,7 @@ body.home-page, html.home-page {
 
 @media (max-width: 1400px) {
   .back-link {
-    top: calc(var(--title-margin-top) + 32px);
+    top: calc(var(--title-margin-top) + 60px);
   }
 
   .flap {
