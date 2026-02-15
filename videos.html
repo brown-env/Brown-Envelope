@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; frame-src https://bandcamp.com; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; frame-src https://bandcamp.com https://www.youtube.com; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;">
   <meta name="referrer" content="no-referrer">
   <title>Videos</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,6 +17,20 @@
     <a class="back-link" href="index.html" aria-label="Back to home">←</a>
     <div class="page-title">Videos</div>
   </div>
+  <main class="video-page">
+    <div class="video-embed" aria-label="Brown Envelope video">
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/7mlBO6wLM_k?si=1Tzx9CF22S528nCe"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </main>
   <div class="site-copyright">© Brown Envelope</div>
   <script src="script.js" defer></script>
 </body>
