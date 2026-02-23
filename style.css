@@ -727,8 +727,8 @@ body.home-page, html.home-page {
   .category-page {
     --title-size: 38px;
     --back-size: 44px;
-    --title-margin-top: 32px;
-    padding-top: 40px;
+    --title-margin-top: calc(64px + env(safe-area-inset-top));
+    padding-top: calc(72px + env(safe-area-inset-top));
     padding-bottom: 40px;
   }
 
