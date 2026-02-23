@@ -415,6 +415,55 @@ body.home-page, html.home-page {
   display: block;
 }
 
+.video-embed--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.video-placeholder-envelope {
+  width: 100%;
+  height: 100%;
+}
+
+.video-embed--placeholder .music-envelope-container .envelope {
+  transform: none;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.video-embed--placeholder .music-envelope-container .flap:hover {
+  transform: rotateX(-30deg) translateZ(2px) translateY(-1px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.18);
+  transition: transform 160ms ease-in-out, box-shadow 160ms ease-in-out;
+}
+
+.video-embed--placeholder .music-envelope-container.is-openable .flap:hover {
+  transform: rotateX(-24deg) translateZ(4px) translateY(-1px);
+  box-shadow: 0 14px 22px rgba(0,0,0,0.2);
+}
+
+.video-embed--placeholder .music-envelope-container.is-openable:hover .envelope {
+  box-shadow: 0 14px 30px rgba(0,0,0,0.22), inset 0 0 0 1px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+
+.video-embed--placeholder .video-placeholder-envelope .seal-text {
+  font-size: clamp(20px, 2.6vw, 34px);
+  letter-spacing: 2px;
+  padding: 10px 22px 8px;
+}
+
+.video-embed--placeholder .video-placeholder-envelope .seal-text--flap {
+  display: none;
+}
+
+.video-embed--placeholder .video-placeholder-envelope .seal-text--body {
+  top: 50%;
+  clip-path: none;
+  transform: translate(-50%, -50%) rotate(-3deg) skewX(-1deg);
+}
+
 .contact-email {
   gap: 6px;
 }
@@ -470,6 +519,11 @@ body.home-page, html.home-page {
   width: 230px;
   height: 350px;
   position: relative;
+}
+
+.video-embed--placeholder .music-envelope-container.video-placeholder-envelope {
+  width: 100%;
+  height: 100%;
 }
 
 .music-envelope-container.is-locked .envelope {
