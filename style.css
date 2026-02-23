@@ -259,10 +259,10 @@ body.home-page, html.home-page {
   min-height: 100vh;
   background: #fff;
   position: relative;
-  overflow-y: auto;
+  /* overflow-y removed to prevent double scrollbars */
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   justify-content: flex-start;
   font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
   --title-size: 56px;
@@ -449,9 +449,14 @@ body.home-page, html.home-page {
 }
 
 .video-embed--placeholder .video-placeholder-envelope .seal-text {
-  font-size: clamp(20px, 2.6vw, 34px);
-  letter-spacing: 2px;
-  padding: 10px 22px 8px;
+  font-size: clamp(22px, 3vw, 38px);
+  letter-spacing: 1.5px;
+  padding: 10px 24px 8px;
+  white-space: nowrap;
+}
+
+.video-embed--placeholder .video-placeholder-envelope .flap {
+  height: 20%;
 }
 
 .video-embed--placeholder .video-placeholder-envelope .seal-text--flap {
@@ -795,6 +800,10 @@ body.home-page, html.home-page {
 
   .page-header {
     margin-bottom: 32px;
+  }
+
+  .back-link {
+    display: none;
   }
 
   .music-grid {
