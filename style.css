@@ -309,27 +309,6 @@ body.home-page, html.home-page {
   width: 100%;
 }
 
-.back-link {
-  position: absolute;
-  left: 24px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-  font-family: 'Special Elite', "Courier New", Courier, "Lucida Console", monospace;
-  font-size: var(--back-size);
-  font-weight: 900;
-  text-shadow: 0 0 1px rgba(0,0,0,0.85);
-  color: rgba(0,0,0,0.65);
-  text-decoration: none;
-  line-height: var(--title-line-height);
-  padding: 0;
-  transition: color 160ms ease, text-shadow 160ms ease;
-}
-
-.back-link:hover {
-  color: #dc143c;
-  text-shadow: 0 0 6px rgba(220,20,60,0.25);
-}
 
 .live-soon {
   position: relative;
