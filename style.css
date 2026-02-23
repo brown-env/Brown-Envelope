@@ -343,13 +343,17 @@ body.home-page, html.home-page {
   text-transform: none;
 }
 
+
 .live-soon:hover {
   color: #dc143c;
 }
 
 .live-page {
   min-height: 100vh;
-  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding-bottom: 24px;
 }
 
@@ -485,7 +489,7 @@ body.home-page, html.home-page {
 }
 
 .music-page .page-title {
-  margin-bottom: 48px;
+  margin-bottom: 28px;
 }
 
 .music-grid {
