@@ -1,3 +1,41 @@
+/* Ensure envelope and placeholder match YouTube video dimensions */
+.video-embed--placeholder {
+  width: 560px !important;
+  height: 315px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.video-placeholder-envelope.envelope-container {
+  width: 560px !important;
+  height: 315px !important;
+  min-width: 560px !important;
+  min-height: 315px !important;
+  max-width: 560px !important;
+  max-height: 315px !important;
+}
+
+.video-placeholder-envelope .envelope {
+  width: 560px !important;
+  height: 315px !important;
+  min-width: 560px !important;
+  min-height: 315px !important;
+  max-width: 560px !important;
+  max-height: 315px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-placeholder-envelope .seal-text--flap,
+.video-placeholder-envelope .seal-text--body {
+  font-size: 2rem !important;
+  text-align: center;
+  width: 100%;
+}
 body, html {
   margin: 0;
   padding: 0;
