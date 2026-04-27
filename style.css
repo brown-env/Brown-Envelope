@@ -1,3 +1,11 @@
+@keyframes june-shake {
+  0% { transform: none; }
+  20% { transform: translateX(-1.5px) rotateZ(-0.4deg); }
+  40% { transform: translateX(1.5px) rotateZ(0.4deg); }
+  60% { transform: translateX(-1px) rotateZ(-0.2deg); }
+  80% { transform: translateX(1px) rotateZ(0.2deg); }
+  100% { transform: none; }
+}
 /* Ensure envelope and placeholder match YouTube video dimensions */
 .video-embed--placeholder {
   width: 560px !important;
@@ -517,15 +525,21 @@ body.home-page, html.home-page {
   padding: 0 48px;
   box-sizing: border-box;
   display: flex;
-  justify-content: space-between;
-  gap: 36px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 48px;
 }
 
 .music-card {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  gap: 8px;
+  align-items: center;
+  width: 350px;
+  min-width: 300px;
+  max-width: 350px;
+  gap: 16px;
+  box-sizing: border-box;
 }
 
 .music-art {
@@ -560,13 +574,17 @@ body.home-page, html.home-page {
 
 
 .music-envelope-container.is-static .flap {
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .music-envelope-container.is-static .flap:hover,
 .music-envelope-container.is-static .flap:active {
   transform: none;
   box-shadow: inset 0 -2px 4px rgba(0,0,0,0.12);
+}
+.music-envelope-container.is-static:hover {
+  animation: june-shake 0.5s linear 1;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.10);
 }
 
 .music-envelope-container .envelope {
@@ -591,41 +609,12 @@ body.home-page, html.home-page {
   cursor: default;
 }
 
-/* Give April/June the same dramatic hover tilt */
-.music-page .music-envelope-container .flap:hover {
-  transform: rotateX(-30deg) translateZ(2px) translateY(-1px);
-  box-shadow: 0 12px 20px rgba(0,0,0,0.18);
-  transition: transform 160ms ease-in-out, box-shadow 160ms ease-in-out;
-}
-
-/* Make the April (openable) envelope hover feel richer */
-.music-page .music-envelope-container.is-openable .flap:hover {
-  transform: rotateX(-24deg) translateZ(4px) translateY(-1px);
-  box-shadow: 0 14px 22px rgba(0,0,0,0.2);
-}
-
-/* Subtle hover for June (static) */
-.music-page .music-envelope-container.is-static .flap:hover {
-  transform: rotateX(-12deg) translateZ(1px) translateY(-0.5px);
-  box-shadow: 0 8px 14px rgba(0,0,0,0.14);
-}
-
-.music-page .music-envelope-container.is-static:hover .envelope {
-  box-shadow: 0 10px 22px rgba(0,0,0,0.18), inset 0 0 0 1px rgba(0,0,0,0.08);
-  transform: translateY(-1px);
-  transition: transform 220ms ease, box-shadow 220ms ease;
-}
-
-.music-page .music-envelope-container.is-openable:hover .envelope {
-  box-shadow: 0 14px 30px rgba(0,0,0,0.22), inset 0 0 0 1px rgba(0,0,0,0.08);
-  transform: translateY(-2px);
-  transition: transform 220ms ease, box-shadow 220ms ease;
-}
-
+/* Only static envelope hover for June remains */
+.music-page .music-envelope-container .flap:hover,
 .music-page .music-envelope-container .flap:active {
-  transform: rotateX(-36deg) translateZ(2px);
-  box-shadow: 0 14px 24px rgba(0,0,0,0.2);
-  transition: transform 120ms ease-in-out, box-shadow 120ms ease-in-out;
+  transform: none;
+  box-shadow: inset 0 -2px 4px rgba(0,0,0,0.12);
+  transition: none;
 }
 
 .seal-text {
